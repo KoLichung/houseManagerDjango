@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang = "zh-Hant" dir="ltr">
+<head>
+  <meta charset = "utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name = "viewport", content= "width = device-width, initial-scale = 1" >
+  <meta name = "robots" content = "index, follow">
+  <meta name = "description" content="網路時代，你需要利用個人品牌脫穎而出!努力很重要，但選擇對的方法更重要！成功的房仲事業，從這裡開始！">
+  
+  <title>齊家科技</title>
+  <!-- favicon -->
+  <!-- <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/logo_chi_jia.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/logo_chi_jia.png">
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/img/logo_chi_jia.png"> -->
+  <!-- css -->
+  <link rel="stylesheet" href="{% static 'web/vendors/swiper/swiper-bundle.min.css' %}">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+  <link href="{% static 'web/vendors/overlayscrollbars/OverlayScrollbars.min.css' %}" rel="stylesheet">
+  <link href="{% static 'web/assets/css/theme.min.css' %}" rel="stylesheet" id="style-default">
+  <link href="{% static 'web/assets/css/user.css' %}" rel="stylesheet" id="user-style-default">
+</head>
+<body>
+  <!-- nav bar -->
+  <nav class="navbar navbar-light navbar-expand-lg nav-bg">
+    <div class="container">
+      <button class="btn navbar-toggler-humburger-icon navbar-toggler me-1 me-sm-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarStandard" aria-controls="navbarStandard" aria-expanded="false" aria-label="Toggle Navigation">
+        <span class="navbar-toggle-icon">
+          <span class="toggle-line"></span>
+        </span>
+      </button>
+      <!-- title -->
+      <a class="navbar-brand" href="{% url 'index' %}">
+        <span class="text-dark">房仲名片網</span>
+      </a>
+
+      <div class="collapse navbar-collapse scrollbar" id="navbarStandard">
+        <ul class="navbar-nav" data-top-nav-dropdowns="data-top-nav-dropdowns">
+          <li class="nav-item">
+            <a class="nav-link-custom" href="{% url 'index' %}#features">三大特點</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link-custom" href="{% url 'index' %}#testimonial">名人推薦</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link-custom" href="{% url 'pricing' %}">方案比較</a>
+          </li>
+        </ul>
+      </div>
+      
+      <ul class="navbar-nav navbar-nav-icons ms-auto flex-row align-items-center">
+        <li class="nav-item">
+          <a class="nav-link-custom" href="{% url 'login' %}">
+            登入/註冊
+          </a>
+        </li>
+      </ul>
+      
+    </div>
+  </nav>
+  
+  {% block content %}{% endblock %}
+
+  <!-- footer -->
+  <footer class="py-4">
+    <div class="footer-text">
+        齊家創意股份有限公司 All Rights Reserved.
+    </div>
+  </footer>
+
+      <!-- JavaScripts -->
+      <script src="{% static 'web/vendors/popper/popper.min.js' %}"></script>
+      <script src="{% static 'web/vendors/bootstrap/bootstrap.min.js' %}"></script>
+      <script src="{% static 'web/vendors/anchorjs/anchor.min.js' %}"></script>
+      <script src="{% static 'web/vendors/is/is.min.js' %}"></script>
+      <script src="{% static 'web/vendors/swiper/swiper-bundle.min.js' %}"> </script>
+      <script src="{% static 'web/vendors/typed.js/typed.js' %}"></script>
+      <script src="{% static 'web/vendors/fontawesome/all.min.js' %}"></script>
+      <script src="{% static 'web/vendors/lodash/lodash.min.js' %}"></script>
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+      <script src="{% static 'web/vendors/list.js/list.min.js' %}"></script>
+      <script src="{% static 'web/assets/js/theme.js' %}"></script> 
+</body>
+</html>

@@ -1,0 +1,86 @@
+{% extends 'web/base.html' %} {% block content %}
+{% load static %}
+
+  
+  <!-- main -->
+  <main class="login-register-bg">
+    <div class="main" id="top">
+      <div class="container-fluid">
+        <div class="row min-vh-100 flex-center g-0">
+          <div class="col-lg-8 col-xxl-5 py-3 position-relative">
+            <div class="card overflow-hidden z-index-1">
+              <div class="card-body p-0">
+                <div class="row g-0 h-100">
+                  <div class="col-md-5 text-center bg-card-gradient">
+                    <div class="position-relative p-4 pt-md-5 pb-md-7 light">
+                      <div class="bg-holder bg-auth-card-shape" style="background-image:url({% static 'web/assets/img/half-circle.png' %});"></div>
+                      <!--/.bg-holder-->
+
+                      <div class="z-index-1 position-relative">
+                        <a class="link-light mb-4 font-sans-serif fs-4 d-inline-block fw-bolder" href="#">房仲名片網</a>
+                        <p class="opacity-75 text-white">
+                          從競爭激烈的商圈脫穎而出<br>
+                          就從這裡開始！
+                        </p>
+                      </div>
+                    </div>
+                    <div class="mt-3 mb-4 mt-md-4 mb-md-5 light">
+                      <p class="text-white">
+                        還沒有帳號？<br>
+                        <a class="text-decoration-underline link-light" href="{% url 'register' %}">立刻申請</a>
+                      </p>
+                      <!-- <p class="mb-0 mt-4 mt-md-5 fs--1 fw-semi-bold text-white opacity-75">
+                        Read our 
+                        <a class="text-decoration-underline text-white" href="#!">terms</a>
+                        and 
+                        <a class="text-decoration-underline text-white" href="#!">conditions </a>
+                      </p> -->
+                    </div>
+                  </div>
+                  <div class="col-md-7 d-flex flex-center">
+                    <div class="p-4 p-md-5 flex-grow-1">
+                      <div class="row flex-between-center">
+                        <div class="col-auto">
+                          <h3>登入</h3>
+                        </div>
+                      </div>
+                      <form>
+                        <div class="mb-3">
+                          <label class="form-label" for="card-email">請輸入您的 Email</label>
+                          <input class="form-control" id="card-email" type="email" />
+                        </div>
+                        <div class="mb-3">
+                          <div class="d-flex justify-content-between">
+                            <label class="form-label" for="card-password">請輸入您的密碼</label>
+                          </div>
+                          <input class="form-control" id="card-password" type="password" />
+                        </div>
+                        <div class="row flex-between-center">
+                          <div class="col-auto">
+                            <div class="form-check mb-0">
+                              <!-- <input class="form-check-input" type="checkbox" id="card-checkbox" checked="checked" />
+                              <label class="form-check-label mb-0" for="card-checkbox">Remember me</label> -->
+                            </div>
+                          </div>
+                          {% comment %} <div class="col-auto">
+                            <a class="fs--1" href="#">忘記密碼？</a>
+                          </div> {% endcomment %}
+                        </div>
+                        <div class="mb-3">
+                          <button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit">登入</button>
+                        </div>
+                      </form>
+                      
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+{% endblock %}

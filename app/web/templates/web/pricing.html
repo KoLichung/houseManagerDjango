@@ -1,0 +1,90 @@
+{% extends 'web/base.html' %} {% block content %}
+{% load static %}
+  <!-- main -->
+  <main class="main bg-white" id="top">
+    <div class="container " data-layout="container">
+      <div class="content">
+        
+        <div class="mb-3">
+          <div class="card-body">
+            <div class="row justify-content-center">
+
+              <div class="col-12 text-center mb-4">
+                <div class="fs-1 pricing-title mt-3">方案選購</div>
+                <!-- <h3 class="fs-2 fs-md-3">Free plan with all the basic features. <br class="d-none d-md-block" />Pro plan for advanced users.</h3> -->
+              </div>
+
+              <div class="col-12 col-lg-9 col-xl-10 col-xxl-8">
+                <div class="row">
+
+                  <div class="col-md">
+                    <div class="border rounded-3 overflow-hidden">
+                      <div class="p-4">
+                        <div>
+                          <h3 class="fw-light fs-5 mb-0 text-primary">月繳</h3>
+                        </div>
+                        <div class="text-end">
+                          <h2 class="fw-light mt-0 text-primary">
+                            <sup class="fs-1">&dollar;</sup>
+                            <span class="fs-3">499</span>
+                            <span class="fs--2 mt-1">/ 每月</span>
+                          </h2>
+                        </div>
+                      </div>
+                      <div class="p-4 bg-light d-flex flex-column justify-content-between" style="height: 380px">
+                        <ul class="list-unstyled">
+                          <li class="border-bottom py-2"> <span class="fas fa-check text-primary" data-fa-transform="shrink-2"> </span>&emsp;個人數位名片</li>
+                          <li class="border-bottom py-2"> <span class="fas fa-check text-primary" data-fa-transform="shrink-2"></span>&emsp;自動同步 591 案件</li>
+                          <li class="py-2 border-bottom"><span class="fas fa-check text-primary" data-fa-transform="shrink-2"></span>&emsp;廣告追蹤 </li>
+                          <li class="py-2 border-bottom text-300"><span class="fas fa-check" data-fa-transform="shrink-2"></span>&emsp;一年總計 $ 5988</li>
+                        </ul>
+                        <button class="btn btn-primary d-block w-100" type="button">選購</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md">
+                    <div class="border rounded-3 overflow-hidden">
+                      <div class="p-4">
+                        <div>
+                          <h3 class="fw-light text-primary fs-5 mb-0">年繳</h3>
+                        </div>
+                        <div class="text-end">
+                            <h2 class="fw-light text-primary mt-0">
+                                <span class="fs--2 mt-1">平均</span>
+                                <sup class="fs-1">&dollar;</sup>
+                                <span class="fs-3">250</span>
+                                <span class="fs--2 mt-1">/ 月</span>
+                              </h2>
+                        </div>
+                      </div>
+
+                      <div class="p-4 bg-light d-flex flex-column justify-content-between" style="height: 380px">
+                        <ul class="list-unstyled">
+                          <li class="border-bottom py-2"> <span class="fas fa-check text-primary" data-fa-transform="shrink-2"> </span>&emsp;個人數位名片</li>
+                          <li class="border-bottom py-2"> <span class="fas fa-check text-primary" data-fa-transform="shrink-2"></span>&emsp;自動同步 591 案件</li>
+                          <li class="py-2 border-bottom"><span class="fas fa-check text-primary" data-fa-transform="shrink-2"></span>&emsp;廣告追蹤 </li>
+                          <li class="py-2 border-bottom"><span class="fas fa-check text-primary" data-fa-transform="shrink-2"></span>&emsp;一年總計 $ 2999</li>
+                          <li class="py-2 border-bottom"><span class="fas fa-check text-primary" data-fa-transform="shrink-2"></span>&emsp;<span style="color: red;">限時加送一年</span></li>
+                        </ul>
+                        <button class="btn btn-primary d-block w-100" type="button">選購</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- <div class="col-12 text-center">
+                <h5 class="mt-5">Looking for personal or small team task management?</h5>
+                <p class="fs-1">Try the <a href="#">basic version</a> of chijia</p>
+              </div> -->
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </main>
+
+
+{% endblock %}

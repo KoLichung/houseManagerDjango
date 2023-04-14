@@ -1,0 +1,191 @@
+{% extends 'web/base.html' %} {% block content %}
+{% load static %}
+
+  
+  <!-- intro -->
+  <div class="bg-frontpage-cover">
+    <div class="container py-7">
+      <div class="row justify-content-start">
+        <div class="col">
+          <div class="intro-border-title mt-3">☝️ 打造個人品牌的起點!</div>
+          <div class="intro-title mt-3 mb-4">成功的房仲事業<br>從這裡開始！</div>
+          <div class="intro-subtitle my-3">網路時代，你需要利用個人品牌脫穎而出<br>努力很重要，但選擇對的方法更重要！</div>
+          <div class=" my-4">
+            <a class="action-button" href="#features">立即了解 👉</a>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- logo section -->
+  <section class="bg-light house-agent-section">
+    <div class="house-agent-logo">
+      <img class="img-fluid" src="{% static 'web/assets/img/yungching.png' %}" alt="" >
+    </div>
+    <div class="house-agent-logo">
+      <img class="img-fluid" src="{% static 'web/assets/img/dongsen.png' %}" alt="">
+    </div>
+    <div class="house-agent-logo">
+      <img class="img-fluid" src="{% static 'web/assets/img/taiwan.png' %}" alt="">
+    </div>
+    <div class="house-agent-logo">
+      <img class="img-fluid" src="{% static 'web/assets/img/21.png' %}" alt="">
+    </div>
+    <div class="house-agent-logo">
+      <img class="img-fluid" src="{% static 'web/assets/img/pacific.png' %}" alt="">
+    </div>
+
+
+  </section>
+
+  <!-- 3 features -->
+  <div class="three-feature-container pb-5">
+    <div id="features" class="feature-title mt-4">- 個人數位名片三大特點 -</div>
+    <div class="feature-subtitle">
+      該如何從商圈的眾多房仲脫穎而出、建立自己的知名度？<br>
+      您需要打造個人品牌，贏得客戶對你的信任感！
+    </div>
+
+    <div class="row align-items-center justify-content-center" style="margin: 2rem 0;">
+      <div class="col-12 col-md-6 text-center text-md-end">
+        <img class="feature-icon" src="{% static 'web/assets/img/digital_card.png' %}" alt="">
+      </div>
+      <div class="col-10 col-md-6 text-center text-md-start">
+        <div class="feature-description">
+          <div class="small-title">⚡️ 快速簡便的一頁式名片</div>
+          <div class="">
+            告訴潛在客戶你是誰？你的業務特長是什麼？<br>
+            讓客戶不僅能在第一時間了解你，也能同時留下好印象！
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row align-items-center justify-content-center"  style="margin: 2rem 0;">
+      <div class="col-10 col-md-6 text-center text-md-end order-2 order-md-1">
+        <div class="feature-description">
+          <div class="small-title">✍️ 無痛同步您的房仲案件</div>
+          <div class="small-subtitle">
+            您有 591 店鋪嗎？<br>
+            我們可以自動為您同步案件，免除耗時費工的二次上傳！
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-6 text-center text-md-start order-1 order-md-2">
+        <img class="feature-icon" src="{% static 'web/assets/img/case_synchronize.png' %}" alt="">
+      </div>
+    </div>
+
+    <div class="row align-items-center justify-content-center"  style="margin: 2rem 0;">
+      <div class="col-12 col-md-6 text-center text-md-end">
+        <img class="feature-icon" src="{% static 'web/assets/img/ad_tracker.png' %}" alt="">
+      </div>
+      <div class="col-10 col-md-6 text-center text-md-start">
+        <div class="feature-description">
+          <div class="small-title">📈 輕鬆達成廣告追蹤</div>
+          <div class="small-subtitle">
+              沒有廣告追蹤，<br>
+              您不會知道客戶是從哪裡來的！<br>
+              也不會知道您花的廣告費到底有沒有用！
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- biggest market -->
+  <div class="biggest-market py-3">
+    <div class="feature-title mt-4">- 網路時代最大的市場 -</div>
+    <div class="feature-subtitle mb-5">離開大馬路，到網路上開發您的客戶</div>
+
+    <div class="row d-flex justify-content-center" style="margin: 2rem 0">
+      <div class="col-9 col-md-3 mb-5">
+        <div class="market-box position-relative">
+          <div class="position-absolute top-0 start-50 translate-middle">
+            <img class="box-icon" src="{% static 'web/assets/img/business_card.png' %}">
+          </div>
+          <div class="box-title mt-3">個人數位名片</div>
+          <div class="box-description">包含證言推薦及關於你的常見問題，取得客戶信任，脫離傳統削價競爭的惡性循環。</div>
+        </div>
+      </div>
+
+      <div class="col-9 col-md-3 mb-5">
+        <div class="market-box position-relative">
+          <div class="position-absolute top-0 start-50 translate-middle">
+            <img class="box-icon" src="{% static 'web/assets/img/tick.png' %}">
+          </div>
+          <div class="box-title mt-3">自動化同步</div>
+          <div class="box-description">我們有專業的資訊背景及多年經驗，能夠自動化同步您在 591 店鋪的各項資訊。</div>
+        </div>
+      </div>
+
+      <div class="col-9 col-md-3 mb-5">
+        <div class="market-box position-relative">
+          <div class="position-absolute top-0 start-50 translate-middle">
+            <img class="box-icon" src="{% static 'web/assets/img/megaphone.png' %}">
+          </div>
+          <div class="box-title mt-3">廣告追蹤</div>
+          <div class="box-description">提供您的 FB pixel 或 Google ad ID，就能為您追蹤您的廣告成效，掌握客源。 </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- Testimonial -->
+  <div id="testimonial" class="testimonial">
+    <div class="container pb-3">
+      <div class="feature-title py-4">- 名人推薦 -</div>
+      <div class="row justify-content-center">
+        <div class="col-lg-9 col-xl-8">
+          <div class="swiper-container theme-slider mb-2" data-swiper='{"autoplay":false,"spaceBetween":5,"loop":true,"loopedSlides":5,"slideToClickedSlide":true}'>
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <div class="px-5 px-sm-6">
+                  <p class="text-center text-dark">“ 好用、方便，不論是老鳥、菜鳥房仲都必備的個人數位名片！ ”</p>
+                  <div class="testimonial-name">KEN</div>
+                  <div class="testimonial-position">房地產廣告導客專家-想想集團媒體部總經理</div>
+                  <img class="avatar" src="{% static 'web/assets/img/avatar_ken.jpg' %}" alt="">
+                </div>
+              </div>
+              <!-- <div class="swiper-slide">
+                <div class="px-5 px-sm-6">
+                  <p class="fs-sm-1 fs-md-2 fst-italic text-dark">“ 收費合理而且成果令人滿意，之後有其他需要會再找柯先生。 ”</p>
+                  <p class="fs-0 text-600">雲林 陳先生</p>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <div class="px-5 px-sm-6">
+                  <p class="fs-sm-1 fs-md-2 fst-italic text-dark">“ 回覆很即時，有問必答，態度很專業~~ ”</p>
+                  <p class="fs-0 text-600">苗栗 劉先生</p>
+                </div>
+              </div> -->
+            </div>
+            <!-- <div class="swiper-nav">
+              <div class="swiper-button-next swiper-button-white"></div>
+              <div class="swiper-button-prev swiper-button-white"> </div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta pt-5">
+    <div class="cta-text py-5">
+      打造個人數位名片，讓客戶更了解你<br>
+      為客戶解決痛點、增加信任感！
+    </div>
+    <div class="text-center">
+      <a class="action-button" href="{% url 'pricing' %}">建立我的數位名片 👆</a>
+    </div>
+    
+    
+  </div>
+
+
+{% endblock %}

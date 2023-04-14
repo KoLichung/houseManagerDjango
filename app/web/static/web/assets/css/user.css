@@ -1,0 +1,223 @@
+:root {
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: 18px;
+  --dark-blue: #2A7BE4;
+  --light-blue: #4695FF;
+  --dark-grey: #737272;
+  --black: #344050;
+  --red: #FF656F;
+  
+}
+
+
+/* ======================= nav ======================= */
+.nav-bg{
+  background-color: #EDECE7;
+}
+
+.nav-link-custom{
+  margin: 0 1rem;
+  color: var(--dark-grey);
+}
+
+.nav-link-custom:hover{
+  text-decoration: none;
+}
+
+/* ======================= intro ======================= */
+
+.bg-frontpage-cover{
+  background-size: cover;
+  background-position: center center;
+  background-image: url('/static/web/assets/img/main.jpg');
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+.intro-border-title{
+  border: 1px solid var(--light-blue);
+  padding: 6px 14px;
+  display: inline;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  color: var(--light-blue);
+}
+
+.intro-title{
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--dark-blue);
+  line-height: 2.5rem;
+}
+
+.intro-subtitle{
+  color: var(--dark-grey);
+  font-weight: 700;
+}
+
+.action-button{
+  padding: 10px 20px;
+  border-radius: 30px;
+  background-color: var(--red);
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+a.action-button{
+  text-decoration: none;
+}
+
+a.action-button:hover{
+  color: white;
+  padding: 10px 40px;
+  transition-duration: 1s;
+  cursor: pointer;
+}
+
+/* ======================= house-agent-section ======================= */
+
+
+.house-agent-section{
+  padding: 0 0;
+  margin: 0 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.house-agent-logo{
+  margin: 10px 0;
+  max-width: 80px;
+}
+
+
+/* ======================= 3 features ======================= */
+.three-feature-container{
+  background-color: #EDF2F8;
+}
+
+.feature-icon{
+    max-width: 180px;
+    width:100%;
+}
+
+.feature-title{
+  font-size: 1.8rem;
+  color: var(--light-blue);
+  text-align: center;
+}
+
+.feature-subtitle{
+  color: var(--dark-grey);
+  text-align: center;
+}
+
+.small-title{
+  color: var(--black);
+  font-size: 1.5rem;
+}
+
+/* ======================= biggest-market ======================= */
+
+.biggest-market{
+  background-color: #FAFAFA;
+}
+
+.box-icon{
+  max-width: 60px;
+  width:100%;
+}
+
+.market-box{
+  background-color: white;
+  box-shadow: 3px 4px 5px 2px #dcdcdc;
+  padding: 1rem 2rem;
+  text-align: center;
+  border-radius: 3px;
+  border-bottom-right-radius: 30px;
+}
+
+.box-title{
+
+  color: var(--black);
+}
+
+.box-description{
+  font-size: 0.8rem;
+}
+
+/* ======================= testimonial ======================= */
+.testimonial{
+  background-color: #EFEFEF;
+}
+
+.testimonial-name{
+  text-align: center;
+  font-weight: 700;
+}
+
+.testimonial-position{
+  text-align: center;
+  font-size: 0.8rem;
+
+}
+
+.avatar{
+  border-radius: 50%;
+  height: auto;
+  max-width: 80px;
+  display: block;
+  margin: 1rem auto;
+}
+
+/* ======================= cta ======================= */
+
+.cta{
+  background-size: cover;
+  background-position: center center;
+  background-image: url('/static/web/assets/img/cta_bg.jpg');
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 352px;
+}
+
+.cta-text{
+  font-size: 1.5rem;
+  text-align: center;
+  color: var(--black);
+}
+
+/* ======================= footer ======================= */
+
+footer{
+  background-color: #0C62D0;
+  color: white;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+
+
+/* ==================================================================== */
+/* ======================= login /register page ======================= */
+/* ==================================================================== */
+
+.login-register-bg{
+  background-size: cover;
+  background-position: center center;
+  background-image: url('/static/web/assets/img/register_login_bg2.jpg');
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+/* ==================================================================== */
+/* ============================== pricing ============================= */
+/* ==================================================================== */
+
+.pricing-title{
+  color: var(--light-blue);
+  font-weight: 700;
+}

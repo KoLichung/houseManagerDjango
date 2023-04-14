@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'modelCore',
     'user',
     'seleniumApp',
+    'web',
 ]
 
 MIDDLEWARE = [
