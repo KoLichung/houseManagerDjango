@@ -1,0 +1,47 @@
+{% extends 'backboard/base.html' %} {% block content %}
+{% load static %}
+
+<!-- 主要內容 -->
+<div class="g-3 mb-3">
+    <div class="col-lg-12 ps-lg-2 mb-3">
+        <div class="card h-lg-100">
+            <div class="card-header">
+                <div class="mb-3 section-title">
+                    置頂影片
+                    <hr>
+                </div>
+                <!-- 內容 -->
+                <div class="mb-3">
+                    <label class="form-label" for="exampleFormControlInput1">影片連結</label>
+                    <input class="form-control" id="exampleFormControlInput1" type="text" placeholder="請放 youtube 連結" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="exampleFormControlInput1">標題</label>
+                    <input class="form-control" id="exampleFormControlInput1" type="text" placeholder="" />
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="exampleFormControlInput1">副標</label>
+                    <input class="form-control" id="exampleFormControlInput1" type="text" placeholder="" />
+                </div>
+
+                <div class="col-12 text-end">
+                    <button class="blue-btn" type="submit">儲存</button>
+                </div>
+            </div>
+            <div class="col-10 col-md-7 col-lg-8 my-5 ms-4">
+                <div class="video-mask">
+                    <div class="ratio ratio-16x9">
+                        <iframe 
+                            src="https://www.youtube.com/embed/23uscL6nahw" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+          
+{% endblock %}

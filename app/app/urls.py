@@ -19,4 +19,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/user/', include('user.urls')),
     path('web/', include('web.urls')),
+    path('backboard/', include('backboard.urls')),
 ]

@@ -1,0 +1,37 @@
+{% extends 'backboard/base.html' %} {% block content %}
+{% load static %}
+
+<div class="mb-3">
+    <div class="col-lg-12 ps-lg-2 mb-3">
+      <div class="card h-lg-100">
+        <div class="card-header">
+  
+          <div class="mb-3 d-flex justify-content-between">
+            問答列表
+            <a class="green-btn btn-sm " href="{% url 'new_edit_faq' %}">新增問答</a>
+          </div>
+          <hr>
+                    
+          <div id="tableExample2" data-list='{"valueNames":["name","email","age"],"page":10,"pagination":true}'>
+            <div class="table-responsive scrollbar">
+              <table class="table  table-striped fs--1 mb-0">
+                <tbody class="list">
+                    <tr>
+                      <td>服務者的篩檢結果陽性怎麼辦？（疫情期間陪病篩檢Q&A)</td>
+                      <td class="text-end">                    
+                        <a class="blue-btn btn-sm " href="{% url 'new_edit_faq' %}">編輯</a>
+                        <a class="red-btn btn-sm" href="#" >刪除</a>
+                      </td>
+                    </tr>
+                </tbody>
+              </table>
+            </div>
+            <br>
+          </div>
+
+        </div>
+      </div>
+    </div>
+</div> 
+
+{% endblock %}

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'user',
     'seleniumApp',
     'web',
+    'backboard',
 ]
 
 MIDDLEWARE = [

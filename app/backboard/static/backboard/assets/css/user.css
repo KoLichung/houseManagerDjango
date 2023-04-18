@@ -1,0 +1,71 @@
+/* -------------------------------------------------------------------------- */
+/*                                chijia Button                               */
+/* -------------------------------------------------------------------------- */
+/* prettier-ignore */
+/*# sourceMappingURL=user.css.map */
+
+
+:root{
+  --primary-blue: #0E0392;
+  --red:#df4759;
+}
+
+.section-title{
+  font-weight: 900;
+}
+
+.red-btn {
+  background-color: var(--red);
+  color: white;
+  font-size: 11pt;
+  padding: 4px 8px;
+  border-radius: 3px;
+  border: none;
+}
+
+.green-btn {
+  background-color: #1C7253;
+  color: white;
+  font-size: 11pt;
+  padding: 4px 8px;
+  border-radius: 3px;
+  border: none;
+}
+
+.blue-btn {
+  background-color: var(--primary-blue);
+  color: white;
+  font-size: 11pt;
+  padding: 4px 8px;
+  border-radius: 3px;
+  border: none;
+}
+
+.green-btn:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.red-btn:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.blue-btn:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.blue-thead {
+  background-color: var(--primary-blue);
+  color: #ffffff;
+}
+
+td {
+  vertical-align: baseline;
+}
+
+.avatar{
+  width: 50px;
+  height: 50px;
+}
