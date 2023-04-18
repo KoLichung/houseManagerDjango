@@ -59,3 +59,9 @@ class HouseCase(models.Model):
     price = models.CharField(max_length=20, default='', blank = True, null=True)
     #圖片連結
     image = models.CharField(max_length=255, default='', blank = True, null=True)
+
+class FAQ(models.Model):
+    user =  models.ForeignKey(
+        User,
+        on_delete=models.RESTRICT,
+    )

@@ -5,7 +5,7 @@ from django.http import HttpResponse
 
 urlpatterns = [
     # path('', views.login, name='backboard_login'),
-    path('top_video', views.top_video, name = 'top_video'), 
+    path('', views.top_video, name = 'top_video'), 
     path('main_image', views.main_image, name = 'main_image'), 
     path('about', views.about, name = 'about'), 
     path('testimonial', views.testimonial, name = 'testimonial'), 
