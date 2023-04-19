@@ -20,4 +20,6 @@ urlpatterns = [
     path('api/user/', include('user.urls')),
     path('', include('web.urls')),
     path('backboard/', include('backboard.urls')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
+
 ]

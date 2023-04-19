@@ -101,13 +101,17 @@ def test_crawl_house_agent_cases(house_agent_url):
                 type = li.find("div", {"class": "details"}).find('p',{"class":"l3"}).find('span',{"class":"kind"}).getText().replace('，', '')
                 units = li.find("div", {"class": "area"}).getText()
                 price = li.find("div", {"class": "prices"}).find("p", {"class": "price"}).getText()
+                linkPid = li['id'].replace('zid', '')
+                caseLink = f"https://sale.591.com.tw/home/house/detail/2/{linkPid}.html"
 
+                
                 print(imageLink)
                 print(title)
                 print(county, city)
                 print(type)
                 print(units)
                 print(price)
+                print(caseLink)
 
                 # server 有此筆資料, 則不動
                 # server 沒這個資料, 則增加

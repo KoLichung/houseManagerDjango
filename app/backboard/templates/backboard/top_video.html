@@ -11,24 +11,39 @@
                     <hr>
                 </div>
                 <!-- 內容 -->
-                <div class="mb-3">
-                    <label class="form-label" for="exampleFormControlInput1">影片連結</label>
-                    <input class="form-control" id="exampleFormControlInput1" type="text" placeholder="請放 youtube 連結" />
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label" for="exampleFormControlInput1">標題</label>
-                    <input class="form-control" id="exampleFormControlInput1" type="text" placeholder="" />
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label" for="exampleFormControlInput1">副標</label>
-                    <input class="form-control" id="exampleFormControlInput1" type="text" placeholder="" />
-                </div>
-
-                <div class="col-12 text-end">
-                    <button class="blue-btn" type="submit">儲存</button>
-                </div>
+                <form method="POST" enctype="multipart/form-data">{% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label" for="video_link">影片連結</label>
+                        {% if user.video_link %}
+                            <input class="form-control" id="video_link" name="video_link" value={{ user.video_link }} type="text" placeholder="請放 youtube 連結" />
+                        {% else %}
+                            <input class="form-control" id="video_link" name="video_link" value="" type="text" placeholder="請放 youtube 連結" />
+                        {% endif %}
+                    </div>
+    
+                    <div class="mb-3">
+                        <label class="form-label" for="video_title">標題</label>
+                        {% if user.video_title %}
+                            <input class="form-control" id="video_title" name="video_title" value={{ user.video_title }} type="text" placeholder="" />
+                        {% else %}
+                            <input class="form-control" id="video_title" name="video_title" value="" type="text" placeholder="" />
+                        {% endif %}
+                    </div>
+    
+                    <div class="mb-3">
+                        <label class="form-label" for="video_subtitle">副標</label>
+                        {% if user.video_subtitle %}
+                            <input class="form-control" id="video_subtitle" name="video_subtitle" value={{ user.video_subtitle }} type="text" placeholder="" />
+                        {% else %}
+                            <input class="form-control" id="video_subtitle" name="video_subtitle" value="" type="text" placeholder="" />
+                        {% endif %}
+                    </div>
+    
+                    <div class="col-12 text-end">
+                        <button class="blue-btn" type="submit" name="post" value='save' onclick="location.href='{% url 'top_video' %}'">儲存</button>
+                    </div>
+                </form>
+                
             </div>
             <div class="col-10 col-md-7 col-lg-8 my-5 ms-4">
                 <div class="video-mask">

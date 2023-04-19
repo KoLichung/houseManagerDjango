@@ -12,13 +12,18 @@
             </div>
 
             <!-- 內容 -->
-            <div class="mb-3">
-                <input class="form-control" id="exampleFormControlInput1" type="text" placeholder="" />
-            </div>
-
-            <div class="col-12 text-end">
-                <button class="blue-btn" type="submit">儲存</button>
-            </div>
+            <form method="POST" enctype="multipart/form-data">{% csrf_token %} 
+                <div class="mb-3">
+                    {% if user.case_link %}
+                        <input class="form-control" name="case_link" type="text" value="{{user.case_link}}" />
+                    {% else %}
+                        <input class="form-control" name="case_link" type="text" value="" />
+                    {% endif %}
+                </div>
+                <div class="col-12 text-end">
+                    <button class="blue-btn" type="submit" name="post" value='save' onclick="location.href='{% url 'cases' %}'">儲存</button>
+                </div>
+            </form>
         </div>
       </div>
     </div>

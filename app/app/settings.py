@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'seleniumApp',
     'web',
     'backboard',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -142,5 +143,7 @@ STATIC_ROOT = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'modelCore.User'
+
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
 CELERY_BROKER_URL = 'amqp://guest:guest@localhost'

@@ -11,19 +11,30 @@
           </div>
 
             <!-- 內容 -->
-            <div class="mb-3">
-                <label class="form-label" for="exampleFormControlInput1">Facebook Pixel</label>
-                <input class="form-control" id="exampleFormControlInput1" type="text" placeholder="" />
-            </div>
 
-            <div class="mb-3">
-                <label class="form-label" for="exampleFormControlInput1">Google ID</label>
-                <input class="form-control" id="exampleFormControlInput1" type="text" placeholder="" />
-            </div>
+            <form method="POST" enctype="multipart/form-data">{% csrf_token %} 
+              <div class="mb-3">
+                  <label class="form-label" for="fb_pixel">Facebook Pixel</label>
+                  {% if user.fb_pixel%}
+                    <input class="form-control" id="fb_pixel" name ="fb_pixel" type="text" value="{{user.fb_pixel}}"/>
+                  {% else %}
+                    <input class="form-control" id="fb_pixel" name ="fb_pixel" type="text" />
+                  {% endif %}
+              </div>
 
-            <div class="col-12 text-end">
-                <button class="blue-btn" type="submit">儲存</button>
-            </div>
+              <div class="mb-3">
+                  <label class="form-label" for="google_id">Google ID</label>
+                  {% if user.google_id %}
+                    <input class="form-control" id="google_id" name="google_id" type="text" value="{{user.google_id}}"/>
+                  {% else %}
+                    <input class="form-control" id="google_id" name="google_id" type="text" />
+                  {% endif %}
+              </div>
+
+              <div class="col-12 text-end">
+                  <button class="blue-btn" type="submit" name="post" value='save' onclick="location.href='{% url 'advert_setting' %}'">儲存</button>
+              </div>
+            </form>
         
         </div>
       </div>

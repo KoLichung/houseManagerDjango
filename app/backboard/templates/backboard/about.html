@@ -1,5 +1,8 @@
 {% extends 'backboard/base.html' %} {% block content %}
 {% load static %}
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+
 
 <div class="g-3 mb-3">
     <div class="col-lg-12 ps-lg-2 mb-3">
@@ -27,31 +30,47 @@
             </div>
           </div>
 
-          <div class="mb-3">
-            <label class="form-label" for="exampleFormControlInput1">暱稱(必填)</label>
-            <input class="form-control" id="exampleFormControlInput1" type="text" placeholder="" />
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label" for="exampleFormControlInput1">電話</label>
-            <input class="form-control" id="exampleFormControlInput1" type="text" placeholder="" />
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label" for="exampleFormControlInput1">LINE ID</label>
-            <input class="form-control" id="exampleFormControlInput1" type="text" placeholder="" />
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label" for="exampleFormControlInput1">關於我</label>
-            <div class="min-vh-50">
-                {{ form.body }}
-            </div>                  
-          </div>
-
-          <div class="col-12 text-end">
-            <button class="blue-btn" type="submit">儲存</button>
-          </div>
+          <form method="POST" enctype="multipart/form-data">{% csrf_token %} 
+            <div class="mb-3">
+              <label class="form-label" for="nickname">暱稱(必填)</label>
+              {% if user.nickname %}
+                <input class="form-control" id="nickname" name="nickname" type="text" value="{{user.nickname}}" />
+              {% else %}
+                <input class="form-control" id="nickname" name="nickname" type="text" placeholder="" />
+              {% endif %}
+            
+            </div>
+  
+            <div class="mb-3">
+              <label class="form-label" for="phone_number">電話</label>
+              {% if user.phone_number %}
+                <input class="form-control" id="phone_number" name="phone_number" type="text" value="{{user.phone_number}}"/>
+              {% else %}
+                <input class="form-control" id="phone_number" name="phone_number" type="text"/>
+              {% endif %}
+            </div>
+  
+            <div class="mb-3">
+              <label class="form-label" for="line_id">LINE ID</label>
+              {% if user.line_id %}
+                <input class="form-control" id="line_id" name="line_id" type="text" value="{{user.line_id}}"/>
+              {% else %}
+                <input class="form-control" id="line_id" name="line_id" type="text"/>
+              {% endif %}
+            </div>
+  
+            <div class="mb-3">
+              <label class="form-label">關於我</label>
+              <div class="min-vh-50">
+                  {{ form.body }}
+              </div>                  
+            </div>
+  
+            <div class="col-12 text-end">
+              <button class="blue-btn" type="submit" name="post" value='save' onclick="location.href='{% url 'about' %}'">儲存</button>
+            </div>
+          </form>
+          
         </div>
       </div>
     </div>

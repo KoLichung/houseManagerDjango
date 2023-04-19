@@ -44,16 +44,17 @@
                           <h3>登入</h3>
                         </div>
                       </div>
-                      <form>
+                      <form method="post">
+                        {% csrf_token %}
                         <div class="mb-3">
                           <label class="form-label" for="card-email">請輸入您的 Email</label>
-                          <input class="form-control" id="card-email" type="email" />
+                          <input class="form-control" id="card-email" type="text" name="name" />
                         </div>
                         <div class="mb-3">
                           <div class="d-flex justify-content-between">
                             <label class="form-label" for="card-password">請輸入您的密碼</label>
                           </div>
-                          <input class="form-control" id="card-password" type="password" />
+                          <input class="form-control" id="card-password" type="password" name="password" />
                         </div>
                         <div class="row flex-between-center">
                           <div class="col-auto">
@@ -67,7 +68,7 @@
                           </div> {% endcomment %}
                         </div>
                         <div class="mb-3">
-                          <button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit">登入</button>
+                          <button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit" onclick="location.href='{% url 'login' %}'">登入</button>
                         </div>
                       </form>
                       

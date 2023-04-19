@@ -1,5 +1,8 @@
 {% extends 'backboard/base.html' %} {% block content %}
 {% load static %}
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+
 
 <div class="g-3 mb-3">
     <div class="col-lg-12 ps-lg-2 mb-3">
@@ -15,20 +18,20 @@
   
                 <!-- 新增文章標題 -->
                 <div class="h-lg-100 mb-2">
-                  <div class="">
-                    <div class="">
-                        <input class="form-control" id="title" name="title" placeholder="文章標題" />
-                    </div>
-                  </div>
+                  {% if post %}
+                  <input class="form-control" id="title" name="title" placeholder="文章標題" value="{{post.title}}" />
+                  {% else %}
+                  <input class="form-control" id="title" name="title" placeholder="文章標題" />
+
+                  {% endif %}
+                
                 </div>
           
                 <!-- 輸入文章內容 -->
                 <div class="h-lg-100 mb-2">
-                  <div class="">
-                    <div class="min-vh-50">
-                      {{ form.body }}
-                    </div>
-                  </div>   
+                  <div class="min-vh-50">
+                    {{ form.body }}
+                  </div>
                 </div>
           
                 <!-- 按鈕欄 -->

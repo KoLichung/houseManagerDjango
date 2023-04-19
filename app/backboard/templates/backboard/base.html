@@ -162,15 +162,17 @@
                     <span class="toggle-line"></span>
                 </span>
             </button>
-            <a class="navbar-brand me-1 me-sm-3" href="{% url 'top_video' %}./top_video.html">
+            <a class="navbar-brand me-1 me-sm-3" href="{% url 'top_video' %}">
               <div class="d-flex align-items-center">
                   <span class="font-sans-serif">房仲名片網</span>
               </div>
             </a>
+            
             <ul class="navbar-nav navbar-nav-icons ms-auto flex-row align-items-center">
+                <li class="nav-item mx-3">哈囉！{{ user.name }}</li>
                 <li class="nav-item">
-                    <a class="nav-link pe-0 ps-2" id="navbarLogOut" role="button" href="#">
-                        <i class="fa-solid fa-arrow-right-from-bracket"></i> 登出
+                    <a class="nav-link pe-0 ps-2" id="navbarLogOut" role="button" href="{% url 'backboard_logout' %}">
+                        <i class="fas fa-sign-out-alt"></i> 登出
                     </a>
                 </li>
             </ul>

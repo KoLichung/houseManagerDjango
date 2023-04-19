@@ -4,7 +4,6 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 urlpatterns = [
-    # path('', views.login, name='backboard_login'),
     path('', views.top_video, name = 'top_video'), 
     path('main_image', views.main_image, name = 'main_image'), 
     path('about', views.about, name = 'about'), 
@@ -15,4 +14,5 @@ urlpatterns = [
     path('advert_setting', views.advert_setting, name = 'advert_setting'), 
     path('bills', views.bills, name = 'bills'), 
     path('setting', views.setting, name = 'setting'), 
+    path('logout', views.logout, name='backboard_logout'),
 ]
