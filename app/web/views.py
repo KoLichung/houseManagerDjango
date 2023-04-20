@@ -10,9 +10,9 @@ def index(request):
 
 def login(request):
     if request.method == 'POST':
-        name = request.POST['name']
+        phone = request.POST['phone']
         password = request.POST['password']
-        user = authenticate(request, name=name, password=password)
+        user = authenticate(request, phone=phone, password=password)
         if user is not None:
             auth.login(request, user)
             return redirect('/backboard/',{'user':user})

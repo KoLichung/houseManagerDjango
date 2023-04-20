@@ -16,18 +16,32 @@
           <div id="tableExample2" data-list='{"valueNames":["name","email","age"],"page":10,"pagination":true}'>
             <div class="table-responsive scrollbar">
               <table class="table  table-striped fs--1 mb-0">
+               
                 <tbody class="list">
+                  {% for faq in faqs %}
                     <tr>
-                      <td>服務者的篩檢結果陽性怎麼辦？（疫情期間陪病篩檢Q&A)</td>
+                      <td>{{faq.title}}</td>
                       <td class="text-end">                    
-                        <a class="blue-btn btn-sm " href="{% url 'new_edit_faq' %}">編輯</a>
-                        <a class="red-btn btn-sm" href="#" >刪除</a>
+                        <a class="blue-btn btn-sm " href="{% url 'new_edit_faq' %}?faq_id={{faq.id}}">編輯</a>
+                        <a class="red-btn btn-sm" href="{% url 'faq' %}?delete_id={{faq.id}}" >刪除</a>
                       </td>
                     </tr>
+                  {% endfor %}
                 </tbody>
               </table>
             </div>
             <br>
+
+            {% comment %} <div class="text-center">
+              {% for page_number in blogPosts.adjusted_elided_pages %} 
+                {% if page_number == blogPosts.paginator.ELLIPSIS %} 
+                  {{page_number}} 
+                {% else %}
+                  <a href="?page={{page_number}}" class="{% if page_number == blogPosts.number %}current{% endif %}">&nbsp;&nbsp;{{page_number}}&nbsp;&nbsp;</a>
+                {% endif %} 
+              {% endfor %}
+            </div> {% endcomment %}
+
           </div>
 
         </div>

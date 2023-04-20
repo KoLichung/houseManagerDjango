@@ -13,12 +13,12 @@
             <!-- 內容 -->
             <div class="mb-3 d-flex align-items-center">
                 <img class="avatar rounded-circle" src="{% static 'backboard/assets/img/sample.jpg'%}">
-                <div class="mx-5">Jason Ko (頭像、暱稱 在關於我設定)</div>
+                <div class="mx-5">{{user.nickname}} (頭像、暱稱 在關於我設定)</div>
                 
             </div>
 
             <div class="mb-3">
-                Email: kerlichung@gmail.com
+                手機號碼: {{user.phone}}
             </div>
 
             <div class="mb-3">

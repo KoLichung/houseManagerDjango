@@ -111,7 +111,7 @@ class FAQ(models.Model):
     )
 
     title = models.CharField(max_length = 255, blank = True, null=True)
-    body = RichTextUploadingField(config_name='default')
+    body = models.TextField(default='', blank = True, null=True)
     create_date = models.DateField(blank = True, null=True)
 
 class Bills(models.Model):

@@ -14,8 +14,8 @@ class TestimonialForm(forms.ModelForm):
         model = User
         fields = ['id', 'testimonial']
 
-class FAQForm(forms.ModelForm):
+class UserMainImageForm(forms.ModelForm):
 
     class Meta:
-        model = FAQ
-        fields = ['id', 'body']
+        model = User
+        fields = ['main_image']

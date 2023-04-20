@@ -18,29 +18,30 @@
   
                 <!-- 新增文章標題 -->
                 <div class="h-lg-100 mb-2">
-                  {% if post %}
-                  <input class="form-control" id="title" name="title" placeholder="文章標題" value="{{post.title}}" />
+                  {% if faq.title %}
+                    <input class="form-control" id="title" name="title" placeholder="問題標題" value="{{faq.title}}" />
                   {% else %}
-                  <input class="form-control" id="title" name="title" placeholder="文章標題" />
-
+                    <input class="form-control" id="title" name="title" placeholder="問題標題" />
                   {% endif %}
                 
                 </div>
           
                 <!-- 輸入文章內容 -->
-                <div class="h-lg-100 mb-2">
-                  <div class="min-vh-50">
-                    {{ form.body }}
-                  </div>
+                <div class="mb-3">
+                  {% if faq.body %}
+                    <textarea class="form-control" id="body" name="body" rows="3">{{faq.body}}</textarea>
+                  {% else %}
+                    <textarea class="form-control" id="body" name="body" rows="3" placeholder="請輸入問題的答案"></textarea>
+                  {% endif %}
                 </div>
           
                 <!-- 按鈕欄 -->
                 <div class="row">
                   <div class="col">
-                    <button class="green-btn" href="all_assistances" role="button">取消</button>
+                    <a class="green-btn" href="{% url 'faq' %}" role="button">取消</a>
                   </div>
                   <div class="col text-end">
-                    <button class="blue-btn" type="submit" name="post" value='draft'>
+                    <button class="blue-btn" type="submit" name="faq" value='draft'>
                       儲存
                     </button>
                   </div>

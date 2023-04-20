@@ -1,9 +1,10 @@
 from django.shortcuts import redirect, render
+from django.core.paginator import Paginator
 from django.http import HttpResponse
 from modelCore.models import User, FAQ
 import urllib
 import datetime
-from modelCore.forms import FAQForm, AboutForm, TestimonialForm
+from modelCore.forms import AboutForm, TestimonialForm, UserMainImageForm
 from django.contrib import auth
 from django.contrib.auth import authenticate
 
@@ -13,9 +14,9 @@ def logout(request):
     auth.logout(request)
     return redirect('/')
 
-
 def top_video(request):
-    
+    if not request.user.is_authenticated or not request.user.is_staff:
+        return redirect('/')
     user = request.user
     if request.method == 'POST':
 
@@ -29,9 +30,25 @@ def top_video(request):
     return render(request,'backboard/top_video.html',{'user':user})
 
 def main_image(request):
+    if not request.user.is_authenticated or not request.user.is_staff:
+        return redirect('/')
+    # user = request.user 
+    # userform = UserMainImageForm()
+    # if request.method == 'POST' :
+    #     userform = UserMainImageForm(request.POST or None, request.FILES or None, instance=user)
+    #     if userform.is_valid():
+    #         print('valid')
+    #         user = userform.save(commit=False)
+    #         user.save()
+    #     user = userform.instance
+    #     user.save()
+
+    # return render(request,'backboard/main_image.html',{'user':user,'userform':userform})
     return render(request,'backboard/main_image.html')
 
 def about(request):
+    if not request.user.is_authenticated or not request.user.is_staff:
+        return redirect('/')
 
     user = request.user
     if request.method == 'POST':
@@ -49,13 +66,15 @@ def about(request):
     return render(request,'backboard/about.html',{'user':user, 'form':form})
 
 def testimonial(request):
-    
+    if not request.user.is_authenticated or not request.user.is_staff:
+        return redirect('/')
     user = request.user
     form = TestimonialForm()
     return render(request,'backboard/testimonial.html',{'user':user,'form':form} )
 
 def cases(request):
-
+    if not request.user.is_authenticated or not request.user.is_staff:
+            return redirect('/')
     user = request.user
     if request.method == 'POST':
         user.case_link = request.POST.get('case_link')
@@ -65,43 +84,54 @@ def cases(request):
     return render(request,'backboard/cases.html',{'user':user})
 
 def faq(request):
+    if not request.user.is_authenticated or not request.user.is_staff:
+        return redirect('/')
+    
+    if request.GET.get('delete_id') != None:
+      FAQ.objects.get(id=request.GET.get('delete_id')).delete()
+
+    faqs = FAQ.objects.all().order_by('-id')
+
+    paginator = Paginator(faqs, 20)
+    if request.GET.get('page') != None:
+        page_number = request.GET.get('page') 
+    else:
+        page_number = 1
+    page_obj = paginator.get_page(page_number)
+
+    page_obj.adjusted_elided_pages = paginator.get_elided_page_range(page_number)
    
-    return render(request,'backboard/faq.html')
+    return render(request,'backboard/faq.html', {'faqs':page_obj})
 
 def new_edit_faq(request):
     if not request.user.is_authenticated or not request.user.is_staff:
-        return redirect('/backboard/')
-
+        return redirect('/')
+    
     if request.method == 'POST':
         
-        if request.GET.get('post_id') != None:
-            assistancePost = FAQ.objects.get(id=request.GET.get('post_id'))
+        if request.GET.get('faq_id') != None:
+            faq = FAQ.objects.get(id=request.GET.get('faq_id'))
         else:
-            assistancePost = FAQ()
-            assistancePost.create_date = datetime.datetime.now()
+            faq = FAQ()
+            faq.create_date = datetime.datetime.now()
 
-        assistancePost.title = request.POST.get('title') 
-        assistancePost.body = request.POST.get('body') 
-        
-        
-        if assistancePost.title != None and assistancePost.title != '':
+        faq.title = request.POST.get('title') 
+        faq.body = request.POST.get('body') 
+        faq.user = request.user
+        faq.save()
 
-            if request.FILES.get('cover_image', False):
-                assistancePost.cover_image = request.FILES['cover_image']
+        return redirect_params('faq',{'faq':faq})
+    
+    if request.GET.get('faq_id') != None:
+        faq = FAQ.objects.get(id=request.GET.get('faq_id'))
+        return render(request, 'backboard/new_edit_faq.html', {'faq':faq})
 
-            assistancePost.save()
-
-        return redirect('all_assistances')
-
-    if request.GET.get('post_id') != None:
-        assistancePost = FAQ.objects.get(id=request.GET.get('post_id'))
-        form = FAQForm(instance=assistancePost)
-        return render(request, 'backboard/new_assistance.html', { 'post':assistancePost,'form':form})
-
-    form = FAQForm()
-    return render(request,'backboard/new_edit_faq.html', {'form':form})
+    return render(request,'backboard/new_edit_faq.html')
 
 def advert_setting(request):
+    if not request.user.is_authenticated or not request.user.is_staff:
+        return redirect('/')
+    
     user = request.user
     if request.method == 'POST':
         user.fb_pixel = request.POST.get('fb_pixel')
@@ -112,13 +142,20 @@ def advert_setting(request):
     return render(request,'backboard/advert_setting.html',{'user':user})
 
 def bills(request):
+    if not request.user.is_authenticated or not request.user.is_staff:
+        return redirect('/')
+    
     return render(request,'backboard/bills.html')
 
 def setting(request):
-    return render(request,'backboard/setting.html')
-
+    if not request.user.is_authenticated or not request.user.is_staff:
+        return redirect('/')
+    
+    user = request.user
+    return render(request,'backboard/setting.html',{'user':user})
 
 def redirect_params(url, params=None):
+    
     response = redirect(url)
     if params:
         query_string = urllib.parse.urlencode(params)

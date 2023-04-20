@@ -15,7 +15,7 @@
                     <div class="mb-3">
                         <label class="form-label" for="video_link">影片連結</label>
                         {% if user.video_link %}
-                            <input class="form-control" id="video_link" name="video_link" value={{ user.video_link }} type="text" placeholder="請放 youtube 連結" />
+                            <input class="form-control" id="video_link" name="video_link" value={{ user.video_link }} type="text" placeholder="Youtube 連結格式為 https://www.youtube.com/embed/xxxxx" />
                         {% else %}
                             <input class="form-control" id="video_link" name="video_link" value="" type="text" placeholder="請放 youtube 連結" />
                         {% endif %}
@@ -45,16 +45,21 @@
                 </form>
                 
             </div>
-            <div class="col-10 col-md-7 col-lg-8 my-5 ms-4">
-                <div class="video-mask">
-                    <div class="ratio ratio-16x9">
-                        <iframe 
-                            src="https://www.youtube.com/embed/23uscL6nahw" 
-                            allowfullscreen>
-                        </iframe>
+            {% if user.video_link and "https://www.youtube.com/embed/" in user.video_link%}
+                <div class="col-10 col-md-7 col-lg-8 my-5 ms-4">
+                    <div class="video-mask">
+                        <div class="ratio ratio-16x9">
+                            <iframe 
+                                src="https://www.youtube.com/embed/23uscL6nahw" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
                     </div>
                 </div>
-            </div>
+            {% else %}
+            {% endif %}
+
+
         </div>
     </div>
 </div>
