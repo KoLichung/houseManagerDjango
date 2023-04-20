@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 from django.http import HttpResponse
 from django.contrib import auth
 from django.contrib.auth import authenticate
+from modelCore.models import User
 # Create your views here.
 
 def index(request):
@@ -25,3 +26,7 @@ def register(request):
 def pricing(request):
     return render(request,'web/pricing.html')
 
+def housemanager(request):
+    id = request.GET.get('manager')
+    user = User.objects.get(id=id)
+    return render(request,'web/housemanager.html',{'user':user})

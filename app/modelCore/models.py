@@ -62,7 +62,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     page_link = models.CharField(max_length=255, default='', blank=True, null=True)
 
-    USERNAME_FIELD = 'name'
+    USERNAME_FIELD = 'phone'
 
     #置頂影片
     video_link = models.CharField(max_length=255, default='', blank=True, null=True)
@@ -77,10 +77,11 @@ class User(AbstractBaseUser, PermissionsMixin):
     nickname = models.CharField(max_length=10, default='', blank=True, null=True)
     phone_number = models.CharField(max_length=10, unique=True, blank=True, null=True)
     line_id  = models.CharField(max_length=10, unique=True, blank=True, null=True)
-    about_me = models.TextField(default='', blank = True, null=True)
+
+    about_me = RichTextUploadingField(config_name='about_me', default='')
     
     #親友見證
-    testimonial  = models.TextField(default='', blank = True, null=True)
+    testimonial = RichTextUploadingField(config_name='testimonial', default='')
     
     #591連結
     case_link = models.CharField(max_length=255, default='', blank=True, null=True)

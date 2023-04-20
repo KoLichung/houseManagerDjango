@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from modelCore.models import User, FAQ
 import urllib
 import datetime
-from modelCore.forms import FAQForm
+from modelCore.forms import FAQForm, AboutForm, TestimonialForm
 from django.contrib import auth
 from django.contrib.auth import authenticate
 
@@ -44,11 +44,15 @@ def about(request):
         user.save()
         
         return redirect_params('about',{'user':user})
-
-    return render(request,'backboard/about.html',{'user':user})
+    
+    form = AboutForm()
+    return render(request,'backboard/about.html',{'user':user, 'form':form})
 
 def testimonial(request):
-    return render(request,'backboard/testimonial.html')
+    
+    user = request.user
+    form = TestimonialForm()
+    return render(request,'backboard/testimonial.html',{'user':user,'form':form} )
 
 def cases(request):
 
