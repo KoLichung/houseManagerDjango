@@ -159,23 +159,30 @@
                         <div id="compare" style="padding-top: 70px; margin-top: -50px;">
                             <span class="section-title">不怕比較</span>
                             <h2>精選案件</h2>
-
-                            {% for case in cases %}
-                            <div class="case-item">
-                                <a class="case-link" href="{{case.case_link}}" target="_blank">
-                                    <div class="d-flex">
-                                        <div class="me-3">
-                                            <img src="{{case.image}}">
-                                        </div>
-                                        <div>
-                                            <div>{{case.title}}</div>
-                                            <div>{{case.type}} | {{case.units}} | {{case.price}}</div>
-                                            <div>{{case.address}}</div>
-                                        </div>
+                            <div class="row">
+                                {% for case in cases %}
+                                <div class="col-12 col-md-12 col-lg-6">
+                                    
+                                    <div class="case-item">
+                                        <a class="case-link" href="{{case.case_link}}" target="_blank">
+                                            <div class="d-flex align-items-center">
+                                                <div class="me-3">
+                                                    <img src="{{case.image}}" class="img-fluid">
+                                                </div>
+                                                <div>
+                                                    <div>{{case.title}}</div>
+                                                    <div>{{case.type}} | {{case.units}} | {{case.price}}</div>
+                                                    <div>{{case.address}}</div>
+                                                </div>
+                                            </div>
+                                        </a>
                                     </div>
-                                </a>
+                                    
+                                </div>
+                                {% endfor %}
                             </div>
-                            {% endfor %}
+
+                            
                             
 
                             <h2>來看看 KEN 跟傳統房仲的差距究竟有多大</h2>
