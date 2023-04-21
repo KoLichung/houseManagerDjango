@@ -20,20 +20,21 @@
             <div class="mb-3">
                 手機號碼: {{user.phone}}
             </div>
+            <form method="post" enctype="multipart/form-data">{% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label" for="password">變更密碼</label>
+                    <input class="form-control" id="password" type="password" placeholder="" name="password"/>
+                </div>
 
-            <div class="mb-3">
-                <label class="form-label" for="exampleFormControlInput1">變更密碼</label>
-                <input class="form-control" id="exampleFormControlInput1" type="password" placeholder="" />
-            </div>
+                {% comment %} <div class="mb-3">
+                    <label class="form-label" for="password_again">再次輸入新密碼</label>
+                    <input class="form-control" id="password_again" type="password" placeholder="" />
+                </div> {% endcomment %}
 
-            <div class="mb-3">
-                <label class="form-label" for="exampleFormControlInput1">再次輸入新密碼</label>
-                <input class="form-control" id="exampleFormControlInput1" type="password" placeholder="" />
-            </div>
-
-            <div class="col-12 text-end">
-                <button class="blue-btn" type="submit">儲存</button>
-            </div>
+                <div class="col-12 text-end">
+                    <button class="blue-btn" type="submit"  name="reset_password">儲存</button>
+                </div>
+            </form>
          
         </div>
       </div>

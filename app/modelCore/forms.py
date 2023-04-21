@@ -18,4 +18,4 @@ class UserMainImageForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['main_image']
+        fields = ['phone','main_image']

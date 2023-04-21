@@ -15,8 +15,9 @@ def logout(request):
     return redirect('/')
 
 def top_video(request):
-    if not request.user.is_authenticated or not request.user.is_staff:
-        return redirect('/')
+    if not request.user.is_authenticated:
+        return redirect('/login')
+    
     user = request.user
     if request.method == 'POST':
 
@@ -30,51 +31,53 @@ def top_video(request):
     return render(request,'backboard/top_video.html',{'user':user})
 
 def main_image(request):
-    if not request.user.is_authenticated or not request.user.is_staff:
-        return redirect('/')
-    # user = request.user 
-    # userform = UserMainImageForm()
-    # if request.method == 'POST' :
-    #     userform = UserMainImageForm(request.POST or None, request.FILES or None, instance=user)
-    #     if userform.is_valid():
-    #         print('valid')
-    #         user = userform.save(commit=False)
-    #         user.save()
-    #     user = userform.instance
-    #     user.save()
+    if not request.user.is_authenticated:
+        return redirect('/login')
+    
+    user = request.user 
+    if request.method == 'POST':
+        if request.FILES.get('main_image', False):
+            user.main_image = request.FILES['main_image']
+        user.save()
 
-    # return render(request,'backboard/main_image.html',{'user':user,'userform':userform})
-    return render(request,'backboard/main_image.html')
+    if request.GET.get('main_image') != None:
+        form = UserMainImageForm(instance=user)
+        return render(request, 'backboard/main_image.html', {'form':form})
+
+    form = UserMainImageForm()
+    return render(request,'backboard/main_image.html',{'user':user,'form':form})
 
 def about(request):
-    if not request.user.is_authenticated or not request.user.is_staff:
-        return redirect('/')
+    if not request.user.is_authenticated:
+        return redirect('/login')
 
     user = request.user
     if request.method == 'POST':
-
         user.nickname = request.POST.get('nickname')
         user.phone_number = request.POST.get('phone_number')
         user.line_id = request.POST.get('line_id')
         user.about_me = request.POST.get('about_me')
-
-        user.save()
-        
+        user.save()  
         return redirect_params('about',{'user':user})
     
-    form = AboutForm()
+    form = AboutForm(instance=user)
     return render(request,'backboard/about.html',{'user':user, 'form':form})
 
 def testimonial(request):
-    if not request.user.is_authenticated or not request.user.is_staff:
-        return redirect('/')
+    if not request.user.is_authenticated:
+        return redirect('/login')
     user = request.user
-    form = TestimonialForm()
+    if request.method == 'POST':
+        user.testimonial = request.POST.get('testimonial')
+        user.save()  
+        return redirect_params('testimonial',{'user':user})
+
+    form = TestimonialForm(instance=user)
     return render(request,'backboard/testimonial.html',{'user':user,'form':form} )
 
 def cases(request):
-    if not request.user.is_authenticated or not request.user.is_staff:
-            return redirect('/')
+    if not request.user.is_authenticated:
+        return redirect('/login')
     user = request.user
     if request.method == 'POST':
         user.case_link = request.POST.get('case_link')
@@ -84,8 +87,8 @@ def cases(request):
     return render(request,'backboard/cases.html',{'user':user})
 
 def faq(request):
-    if not request.user.is_authenticated or not request.user.is_staff:
-        return redirect('/')
+    if not request.user.is_authenticated:
+        return redirect('/login')
     
     if request.GET.get('delete_id') != None:
       FAQ.objects.get(id=request.GET.get('delete_id')).delete()
@@ -104,8 +107,8 @@ def faq(request):
     return render(request,'backboard/faq.html', {'faqs':page_obj})
 
 def new_edit_faq(request):
-    if not request.user.is_authenticated or not request.user.is_staff:
-        return redirect('/')
+    if not request.user.is_authenticated:
+        return redirect('/login')
     
     if request.method == 'POST':
         
@@ -129,8 +132,8 @@ def new_edit_faq(request):
     return render(request,'backboard/new_edit_faq.html')
 
 def advert_setting(request):
-    if not request.user.is_authenticated or not request.user.is_staff:
-        return redirect('/')
+    if not request.user.is_authenticated:
+        return redirect('/login')
     
     user = request.user
     if request.method == 'POST':
@@ -142,20 +145,28 @@ def advert_setting(request):
     return render(request,'backboard/advert_setting.html',{'user':user})
 
 def bills(request):
-    if not request.user.is_authenticated or not request.user.is_staff:
-        return redirect('/')
+    if not request.user.is_authenticated:
+        return redirect('/login')
     
     return render(request,'backboard/bills.html')
 
 def setting(request):
-    if not request.user.is_authenticated or not request.user.is_staff:
-        return redirect('/')
+    if not request.user.is_authenticated:
+        return redirect('/login')
     
     user = request.user
+    if request.method == 'POST' and 'reset_password' in request.POST:
+        password = request.POST.get('password')
+        user.set_password(password)
+        user.save()
+        return redirect_params('setting',{'user':user})
+
     return render(request,'backboard/setting.html',{'user':user})
 
+
+# ===========================================
+
 def redirect_params(url, params=None):
-    
     response = redirect(url)
     if params:
         query_string = urllib.parse.urlencode(params)

@@ -9,27 +9,33 @@
             主圖設定
             <hr>
           </div>
+
           <!-- 內容 -->
-          <div class="d-flex justify-content-between">
-            <div class="mb-3">
-              建議尺寸 ＯＯＯxＯＯＯ
-            </div>
+          <div>
+            <form method="post" id="image_post" enctype="multipart/form-data">{% csrf_token %}
+              <div class="row my-2 gx-5" style="padding: 1rem 1rem;">
+                <div>
+                  <b>主要圖片</b> 
+                  
+                  <div>
+                    <input type="hidden" id="post" name="post" value={{user.phone}}>
+                    {{ form.phone.as_hidden }}
+                    {{ form.main_image }}
+                  </div>
 
-            <div class="text-end">
-              <button class="blue-btn" type="submit">選擇照片</button>
-            </div>
-
-            
-
+                  <div>
+                    {% if user.main_image %}
+                      <img src="{{ user.main_image.url }}" class="customImageSize rounded mb-2" width="300px"> <br>
+                    {% else %}
+                      您尚未上傳主圖
+                    {% endif %}
+                  </div>
+                  
+                </div>
+              </div>
+            </form>
           </div>
 
-          
-
-          <div class="row mx-n1 mt-3">
-            <div class="col-6 p-1">
-              <img class=" rounded mb-2" style="width: 200px;" src="{% static 'backboard/assets/img/sample.jpg' %}" alt="" />
-            </div>
-          </div>
         </div>
       </div>
     </div>

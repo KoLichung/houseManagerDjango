@@ -43,8 +43,8 @@
   
             <div class="mb-3">
               <label class="form-label" for="phone_number">電話</label>
-              {% if user.phone_number %}
-                <input class="form-control" id="phone_number" name="phone_number" type="text" value="{{user.phone_number}}"/>
+              {% if user.phone %}
+                <input class="form-control" id="phone_number" name="phone_number" type="text" value="{{user.phone}}"/>
               {% else %}
                 <input class="form-control" id="phone_number" name="phone_number" type="text"/>
               {% endif %}
@@ -62,7 +62,7 @@
             <div class="mb-3">
               <label class="form-label">關於我</label>
               <div class="min-vh-50">
-                  {{ form.about_me }}
+                  {{ form.about_me }} 
               </div>                  
             </div>
   

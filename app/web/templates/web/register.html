@@ -44,23 +44,28 @@
                           <h3>註冊</h3>
                         </div>
                       </div>
-                      <form>
+                      <form method="post">{% csrf_token %}
                         <div class="mb-3">
-                          <label class="form-label" for="card-email">請輸入您的 Email</label>
-                          <input class="form-control" id="card-email" type="email" />
+                          <label class="form-label" for="card-email">名稱(暱稱)</label>
+                          <input class="form-control" id="card-email" type="text" name="name" />
                         </div>
                         <div class="mb-3">
-                          <label class="form-label" for="card-password">請輸入您的密碼</label>
-                          <input class="form-control" id="card-password" type="password" />
+                          <label class="form-label" for="phone">請輸入您的電話</label>
+                          <input class="form-control" id="phone" type="tel" name="phone"/>
                         </div>
                         <div class="mb-3">
-                          <label class="form-label" for="card-password">再次輸入您的密碼</label>
-                          <input class="form-control" id="card-password" type="password" />
+                          <label class="form-label" for="card-password">輸入您的密碼</label>
+                          <input class="form-control" id="card-password" type="password" name="password" />
                         </div>
                         
                         <div class="mb-3">
-                          <button class="btn btn-primary d-block w-100 mt-3" type="submit" name="submit">註冊</button>
+                          <button class="btn btn-primary d-block w-100 mt-3" type="submit" name="register">註冊</button>
                         </div>
+
+                        {% if alert_flag %}
+                            <script>alert("此電話號碼已有人註冊過!")</script>  
+                        {% endif %}
+
                       </form>
                       
                       

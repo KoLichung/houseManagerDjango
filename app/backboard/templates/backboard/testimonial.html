@@ -13,15 +13,18 @@
           </div>
 
             <!-- 內容 -->
-            <div class="mb-3">
-              <div class="min-vh-50">
-                  {{ form.testimonial }}
-              </div>                  
-            </div>
+            <form method="POST" enctype="multipart/form-data">{% csrf_token %} 
+              <div class="mb-3">
+                <div class="min-vh-50">
+                    {{ form.testimonial }}
+                </div>                  
+              </div>
 
-            <div class="col-12 text-end">
-                <button class="blue-btn" type="submit">儲存</button>
-            </div>
+
+              <div class="col-12 text-end">
+                  <button class="blue-btn" type="submit" name="post" value='save' onclick="location.href='{% url 'about' %}'">儲存</button>
+              </div>
+            </form>
         </div>
       </div>
     </div>
