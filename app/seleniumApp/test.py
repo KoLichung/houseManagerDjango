@@ -125,6 +125,7 @@ def test_crawl_house_agent_cases(house_agent_url):
                     houseCase.units = units
                     houseCase.price = price
                     houseCase.image = imageLink
+                    houseCase.case_link = caseLink
                     houseCase.save()
 
             except Exception as e:

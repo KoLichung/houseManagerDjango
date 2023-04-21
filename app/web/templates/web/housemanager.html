@@ -1,1 +1,286 @@
-test
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【店老闆百萬營收學院】一堂服務業老闆必學的導客實戰大課</title>
+    <meta name="robots" content="noindex,follow" />
+    <meta name="googlebot" content="noindex,follow" />
+    <meta name="description" content="【店老闆百萬營收學院】一堂服務業老闆必學的導客實戰大課" />
+    <meta property="og:title" content="【店老闆百萬營收學院】一堂服務業老闆必學的導客實戰大課" />
+    <meta property="og:description" content="【店老闆百萬營收學院】一堂服務業老闆必學的導客實戰大課" />
+    {% comment %} <meta property="og:url" content="https://thinkmediakaik.vip/courses/thinkthink" /> {% endcomment %}
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://warehouse.kaik.network/course/cover_photo/c7db4f5c-f276-4f7b-b575-0ed3324a8592/6056a0e6-b520-455d-b0cb-e1e8d6929076.jpg" />
+    <meta property="og:image:alt" content="不用派報發傳單、完全不懂網路的服務業房仲超業導客系統大公開(本課程為實體課程) " />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href={% static 'house_manager/style3.css' %}>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+</head>
+<body class="bg-dark">
+
+    <section class="my-5 top-video">
+        <div class="container text-center">
+            <div class="row align-items-center">
+
+              <div class="col-12 col-md-7 col-lg-8">
+                <div class="video-mask">
+                    <div class="ratio ratio-16x9">
+                        <iframe 
+                            src="https://www.youtube.com/embed/23uscL6nahw" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+              </div>
+
+              <div class="col-12 col-md-5 col-lg-4 align-items-center">
+                <div class="text-white text-start my-3">
+                    <img class="avatar rounded-circle" src="{% static 'house_manager/images/ken_avatar.jpg' %}">
+                    <span class="name">KEN</span> 
+                </div>
+                <div class="video-title h2 text-white mb-2">不用派報發傳單、完全不懂網路的服務業房仲超業導客系統大公開(本課程為實體課程)</div>
+                <div class="video-subtitle text-white">價值九千元付費級內容|房仲超業百萬營收術49分鐘免費培訓影片</div>
+              </div>
+
+            </div>
+        </div>
+    </section>
+
+    
+        <header class="sticky-top">        
+            <nav class="navbar navbar-expand bg-dark ">
+                <div class="container-fluid">
+                    <div class="mx-auto">
+                        <div class="navigation">
+                            <ul>
+                              <li class="list active">
+                                <a href="#about">
+                                  <span class="text text-white ">關於我</span>
+                                </a>
+                              </li>
+                              <li class="list">
+                                <a href="#seller">
+                                  <span class="text text-white ">親友見證</span>
+                                </a>
+                              </li>
+                              <li class="list">
+                                <a href="#compare">
+                                  <span class="text text-white ">精選案件</span>
+                                </a>
+                              </li>
+                              <li class="list">
+                                <a href="#steps">
+                                  <span class="text text-white " >常見問題</span>
+                                </a>
+                              </li>
+                              <div class="indicator"></div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <script>
+                    const list = document.querySelectorAll(".list");
+    
+                    function activeLink() {
+                        list.forEach((item) => item.classList.remove("active"));
+                        this.classList.add("active");
+                    }
+                    list.forEach((item) => item.addEventListener("click", activeLink));
+                </script>
+            </nav>
+            <hr>
+        </header>
+    
+
+    <article>
+        <div class="container mt-4">
+            <div class="row ps-md-5 pe-md-5">
+                <div class="col-12 col-md-8 order-2 order-md-1 mt-2 text-white">
+                    <div class="mx-3 mx-sm-1">
+                        <div id="about" style="padding-top: 70px; margin-top: -50px;">
+                            <span class="section-title">我是誰</span>
+                            <h1>我是台灣房仲業的傳奇名師、<br><em>房產</em>廣告界的領袖、<em>全國</em>最知名的房仲，為您服務地產買賣</h1>
+                            <div class="mt-4">買房首購專家 - KEN</div>
+                            <ul>
+                                <li>多年房仲經驗</li>
+                                <li><em>精通</em>廣告投放</li>
+                                <li>代銷<em>質感</em>服務</li>
+                                <li>知名房仲 Youtuber</li>
+                                <li><小資族圓夢置產55堂課>作者</li>
+                            </ul>
+    
+                            <div><b>【 <span class="teacher-feature-title">高 知 名 度</span> 】</b></div>
+                            <div>每周接受三立、華視、東森、TVBS等各大新聞採訪、了解市場趨勢</div>
+                            <div class="mt-3"><b>【 <span class="teacher-feature-title">豐 富 經 驗</span> 】</b></div>
+                            <div>每年有超過500位客戶主動上門詢問委託、數十件專任委託，超高知名度加上專業，值得你們的信賴</div>
+                            <div class="mt-3"><b>【 <span class="teacher-feature-title">精 準 廣 告 行 銷</span> 】</b></div>
+                            <div>不走傳統老路，主動出擊潛在客戶，10年來助200位以上的案件配對成功，找到自己心目中的家</div>
+                            <div class="mt-3"><b>【 <span class="teacher-feature-title">專 業 內 行</span> 】</b></div>
+                            <div>曾經完美幫助、服務過企業主、高資產的屋主、大型土地主等獲利，全台灣僅有少數的人有能力能夠處理相關事宜</div>
+                        
+                        </div>
+
+                        <div class="my-3">
+                            <img class="img-fluid" src="{% static 'house_manager/images/2.jpg' %}">
+                        </div>
+
+                        <div id="seller" style="padding-top: 70px; margin-top: -50px;">
+                            <span class="section-title">重點原因</span>
+                            <img class="img-fluid" src="{% static 'house_manager/images/3_points.jpg' %}">
+                            <h2 class="text-center border-text mb-3">為什麼在埔里賣房子找 KEN 就對了？</h2>
+                            <ol>
+                                <li>百萬媒體廣告負責人 術業有專攻，我擁有一間廣告<em>媒體</em>公司，<em>超強媒體</em>團隊、專業廣告知識，完美助攻你的房產包裝</li>
+                                <li>攝影、文案、剪輯、設計、行銷一次排開 一條龍的服務，統一的窗口，專業的團隊歡迎你來體驗，我們絕對能夠針對你的房子找到最適合的銷售突破口，簡單、 有效</li>
+                                <li>品牌背書保證 眾多媒體的採訪已經讓我的名字就是一個品牌，因此您不 用擔心我會欺騙或是落跑，並且高知名度就是高曝光度，選擇吳宣宏就是一個最佳的售屋保證</li>
+                            </ol>
+                        </div>
+
+                        <div id="buyer" style="padding-top: 70px; margin-top: -50px;">
+                            <img class="img-fluid" src="{% static 'house_manager/images/4_secrets.jpg' %}">
+                            <h2 class="text-center mb-3 border-text">為什麼在埔里買房要找 KEN？</h2>
+                            <ol>
+                                <li>擁有海量物件，委託的人多，物件也多，自然能夠精準配對到你心目中的家</li>
+                                <li>豐富經驗曾經與商週刊合作出版過「小資族圓夢置產55堂課」，有足夠的知識及經驗能夠帶領小資族群圓夢，豐富的經驗也意味著各位遇到的問題、困難，我都了解也有解決的方法</li>
+                                <li>知名 Youtuber 拍攝過上百部影片，包含選購房屋攻略、如何破解話術，由此可知我是不會以話術來誘騙你的</li>
+                                <li>在地生根，我是<em>土生土長</em>的埔里孩子，從23歲開始從基層做起，一路做到埔里的房仲店東長，並<em>成為想想集團的共同創辦人</em>，俗話說十年磨一劍，我花了十年在埔里耕耘，也讓自己成為埔里最強、最專業的<em>仲介</em></li>
+                            </ol>
+                            
+                            <div class="text-center h4 my-5 "><em>選擇 KEN，絕對讓你買對不買貴</em></div>
+                            
+                            
+                        </div>
+                        <div id="compare" style="padding-top: 70px; margin-top: -50px;">
+                            <span class="section-title">不怕比較</span>
+                            <h2>精選案件</h2>
+
+                            {% for case in cases %}
+                            <div class="case-item">
+                                <a class="case-link" href="{{case.case_link}}" target="_blank">
+                                    <div class="d-flex">
+                                        <div class="me-3">
+                                            <img src="{{case.image}}">
+                                        </div>
+                                        <div>
+                                            <div>{{case.title}}</div>
+                                            <div>{{case.type}} | {{case.units}} | {{case.price}}</div>
+                                            <div>{{case.address}}</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            {% endfor %}
+                            
+
+                            <h2>來看看 KEN 跟傳統房仲的差距究竟有多大</h2>
+                            <div class="teacher-feature-title">知名度｜默默無名vs台灣最知名的房仲</div>
+                            <div>高知名度代表高曝光，對您的房子是一種免費的廣告，同時 也代表出問題的機率少，沒有人願意用自己的姓名擔保，但我敢</div>
+                            <div class="teacher-feature-title mt-3">銷售方式｜話術滿滿 vs 需求分析</div>
+                            <div>拒絕話術的前提是對於自身專業的自信，因為了解手上的物件、了解客人的需求，所以可以做最適合的推薦</div>
+                            <div class="teacher-feature-title mt-3">素材表現｜手機 vs <em>百萬設備</em></div>
+                            <div>專業的器材不代表拍攝、構圖一定好，但至少畫質清楚，另外還有聘請專業的設計、攝影、剪輯，能夠將物件表現得最好</div>
+                            <div class="teacher-feature-title mt-3">服務態度｜敷衍、沒有按時回報 vs 專案式規劃</div>
+                            <div>積極誠實 誠實、正直、公開、透明，是我對自己的要求，專案式規劃則 是我對你們的責任</div>
+                            <div class="teacher-feature-title mt-3">行銷方式｜傳統、非法電線杆 vs 數位廣告、影音行銷 代銷式影片</div>
+                            <div>行銷方式更加符合現代人的習慣，我一直隨著 時代成長、不斷進步</div>
+                           
+                        </div>
+                        <div id="who" style="padding-top: 70px; margin-top: -50px;">
+                            <h2 class="text-center mt-3 gold-text">應 該 來 找 KEN 的 人</h2>
+                            <img class="img-fluid" src="{% static 'house_manager/images/5_are_you_one_of_them.jpg' %}">
+                            {% comment %} <ul>
+                                <li><span class="teacher-feature-title">新屋出售：</span>委託多位房仲卻遲遲賣不出去，心灰意冷</li>
+                                <li><span class="teacher-feature-title">首購族：</span>買房小白，最怕被話術欺騙</li>
+                                <li><span class="teacher-feature-title">企業：</span>企業相關文件專業又複雜，普通人無法輕易處理</li>
+                                <li><span class="teacher-feature-title">專業人士：</span>專業人士在自己的領域需要不斷精進自己的知識，因此缺乏時間研究房地產相關事宜，需要有具有足夠知識的人協助打理</li>
+                                <li><span class="teacher-feature-title">大地主：</span>擁有廣大土地的老闆，需要大型買家，我擁有足夠的人脈能為您帶來合理又漂亮的價格</li>
+                                <li><span class="teacher-feature-title">上班族：</span>上班耗費的體力、腦力已經將身心靈消耗殆盡，無法仔細研究房地產相關資訊，需要有專業的分析，找到符合自己的需求</li>
+                                <li><span class="teacher-feature-title">建設公司：</span>需要認識大量地主的我為您分析建案，及是否有投資報酬率，值不值得進場</li>
+                            </ul> {% endcomment %}
+                        </div>
+                        <div id="steps" style="padding-top: 70px; margin-top: -50px;">
+                            <span class="section-title">買賣五步驟</span>
+    
+                            <h2 class="mt-3 text-center gold-text">KEN 不 是 只 會 說 說</h2>
+                            <img class="img-fluid mb-3" src="{% static 'house_manager/images/6_buy_and_sell_5_steps.png' %}">
+
+                            <h5 class="mb-4" style="line-height:2rem"><span class="steps-section-title">廣告</span>針對房屋做合適的廣告投遞，足夠的曝光度、正確的 目標客群</h5>
+                            <div class="ratio ratio-16x9">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/rj-SK2rItxo" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+    
+                            <h5 class="my-4" style="line-height:2rem"><span class="steps-section-title">帶看</span>近幾年受到疫情的衝擊，逐漸興起線上看房的趨勢， KEN運用影片剪輯的優勢，將房屋內的優勢、周遭地區的方 便程度等等都能拍成影片，同時也能夠帶領您實際前往看 房</h5>
+                            <div class="ratio ratio-16x9">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/videoseries?list=PLFpI9lDatNTYkygq5Vk2ebHWojDDKDu-G" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            
+                            <h5 class="my-4" style="line-height:2rem"><span class="steps-section-title">銷售</span>數位房仲比起傳動房仲多了數位化的行銷方式，讓銷 售這件事變得更加透明、方便、符合現代</h5>
+                            <div class="ratio ratio-16x9">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/videoseries?list=PLFpI9lDatNTbYqWXSET0hkX4bH-qD2pvv" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            
+                            <h5 class="my-4" style="line-height:2rem"><span class="steps-section-title">議價</span>拒絕話術、拒絕賣弄恐慌感，KEN會實際走訪現場， 針對房屋的屋況、周遭的情況等等，為房子做最適合的訂 價，並為您議價，用合理的價格買賣房屋</h5>
+                            <div class="ratio ratio-16x9">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/QV16ZiHGqmY" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                            
+                            <h5 class="my-4" style="line-height:2rem"><span class="steps-section-title">簽約</span>好的房仲會幫您檢查合約的內容，是否足夠仔細</h5>
+                            <div class="ratio ratio-16x9">
+                                <iframe 
+                                    src="https://www.youtube.com/embed/AAcAKldU0nI" 
+                                    allowfullscreen>
+                                </iframe>
+                            </div>
+                        </div>
+                        <div id="intro" class="my-4">
+                            10年來我幫助過200位以上的客戶找到自己心目中的家，從100萬內的套房到4000萬以上的商辦大樓都能完美解決，
+                            每年更有許多高階主管、大型企業主指定要求我來服務。 
+                            我是 Youtube 頻道買房首購專家的創辦人--KEN，我希望能夠將我這些年在房地產買賣界學到的知識、
+                            大家容易踩到的地雷都一一跟你們說，我希望房地產市場能夠更加誠實、透明，讓大家都能找到自己心目中的家。 
+                            每周我都會接受各大電視台的採訪，分析目前市場的趨勢，讓我的專業能夠幫助各位評估自己目前適不適合買房、賣房，
+                            我是KEN，隨時歡迎您來詢問，體驗專業的服務。
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-4 order-1 order-md-2 mt-2">
+                    <div>
+                        <img src="{% static 'house_manager/images/1.jpg' %}" class="img-fluid">
+                    </div>
+                    <div class="text-white mx-3 mx-sm-1">
+                        <div class="d-grid gap-2 mt-3">
+                            <button class="btn yellow-button" type="button">立即電話諮詢</button>
+                        </div>
+                        <div class="d-grid gap-2 mt-3">
+                            <button class="btn line-button" type="button">立即LINE諮詢</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer class="footer bg-dark">
+        客服信箱：a0980319262@gmail.com <br> 客服電話：0422543484
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </footer>
+</body>
+</html>
