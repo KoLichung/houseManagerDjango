@@ -6,8 +6,25 @@ import random
 import csv
 import os
 from django.db.models import Q
-
 from modelCore.models import User
+
+import environ
+
+ROOT_DIR = (
+    environ.Path(__file__) - 1
+)
+env = environ.Env()
+env.read_env(str(ROOT_DIR.path(".env")))
+
+def crawl_manager_cases_by_requests():
+    print('crawl cases')
+    url = f'https://doc.twse.com.tw/server-java/t57sb01?step=1&colorchg=1&co_id={stock_code}&year={tw_year}&mtype=F&'
+    
+
+    print(url)
+    # payload = {'api_key': env('scraper_key'), 'url': url}
+    payload = {'api_key': 'f23a160f9e3ca319f97bd613b2fa047f', 'url': url}
+    resp = requests.get('http://api.scraperapi.com', params=payload)
 
 def assign_crawl_manager_tasks():
     users = User.objects.all()
