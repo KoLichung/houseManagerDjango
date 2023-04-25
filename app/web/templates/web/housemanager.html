@@ -24,6 +24,7 @@
 </head>
 <body class="bg-dark">
 
+    {% comment %} 置頂影片 {% endcomment %}
     <section class="my-5 top-video">
         <div class="container text-center">
             <div class="row align-items-center">
@@ -52,53 +53,52 @@
         </div>
     </section>
 
-    
-        <header class="sticky-top">        
-            <nav class="navbar navbar-expand bg-dark ">
-                <div class="container-fluid">
-                    <div class="mx-auto">
-                        <div class="navigation">
-                            <ul>
-                              <li class="list active">
-                                <a href="#about">
-                                  <span class="text text-white ">關於我</span>
-                                </a>
-                              </li>
-                              <li class="list">
-                                <a href="#testmonial">
-                                  <span class="text text-white ">親友見證</span>
-                                </a>
-                              </li>
-                              <li class="list">
-                                <a href="#cases">
-                                  <span class="text text-white ">精選案件</span>
-                                </a>
-                              </li>
-                              <li class="list">
-                                <a href="#faq">
-                                  <span class="text text-white " >常見問題</span>
-                                </a>
-                              </li>
-                              <div class="indicator"></div>
-                            </ul>
-                        </div>
+    {% comment %} navbar {% endcomment %}
+    <header class="sticky-top">        
+        <nav class="navbar navbar-expand bg-dark ">
+            <div class="container-fluid">
+                <div class="mx-auto">
+                    <div class="navigation">
+                        <ul>
+                            <li class="list active">
+                            <a href="#about">
+                                <span class="text text-white ">關於我</span>
+                            </a>
+                            </li>
+                            <li class="list">
+                            <a href="#testmonial">
+                                <span class="text text-white ">親友見證</span>
+                            </a>
+                            </li>
+                            <li class="list">
+                            <a href="#cases">
+                                <span class="text text-white ">精選案件</span>
+                            </a>
+                            </li>
+                            <li class="list">
+                            <a href="#faq">
+                                <span class="text text-white " >常見問題</span>
+                            </a>
+                            </li>
+                            <div class="indicator"></div>
+                        </ul>
                     </div>
                 </div>
-                
-                <script>
-                    const list = document.querySelectorAll(".list");
-    
-                    function activeLink() {
-                        list.forEach((item) => item.classList.remove("active"));
-                        this.classList.add("active");
-                    }
-                    list.forEach((item) => item.addEventListener("click", activeLink));
-                </script>
-            </nav>
-            <hr>
-        </header>
-    
+            </div>
+            
+            <script>
+                const list = document.querySelectorAll(".list");
 
+                function activeLink() {
+                    list.forEach((item) => item.classList.remove("active"));
+                    this.classList.add("active");
+                }
+                list.forEach((item) => item.addEventListener("click", activeLink));
+            </script>
+        </nav>
+        <hr>
+    </header>
+    
     <article>
         <div class="container mt-4">
             <div class="row ps-md-5 pe-md-5">
@@ -126,11 +126,9 @@
                             <div>曾經完美幫助、服務過企業主、高資產的屋主、大型土地主等獲利，全台灣僅有少數的人有能力能夠處理相關事宜</div>
                         
                         </div>
-
                         <div class="my-3">
                             <img class="img-fluid" src="{% static 'house_manager/images/2.jpg' %}">
                         </div>
-
                         <div id="seller" style="padding-top: 70px; margin-top: -50px;">
                             <span class="section-title">重點原因</span>
                             <img class="img-fluid" src="{% static 'house_manager/images/3_points.jpg' %}">
@@ -263,78 +261,74 @@
                                 {% endfor %}
                             </div>
                         </div>
-
                         <div id="faq" style="padding-top: 70px; margin-top: -50px;" class="mt-3 mb-5">
                             <h2>常見問題</h2>
-                            <div class="accordion " id="accordionFlushExample">
-                                <div class="accordion-item my-3">
-                                  <h2 class="accordion-header" id="flush-headingOne">
-                                    <button class="accordion-button collapsed border" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                        Q：買房的主要支出項目有哪些?
-                                    </button>
-                                  </h2>
-                                  <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body bg-dark">
+
+                            <div class="accordion-box my-3">
+                                <div class="cutom-accordion-btn">Q：買房的主要支出項目有哪些?</div>
+                                <div class="panel bg-dark">
+                                    <p class="mt-3">
                                         A：主要可分為五大項目<br>
                                         1.頭期款<br>
                                         2.銀行貸款<br>
                                         3.額外費用<br>
                                         4.裝潢費<br>
-                                        5.緊急準備金<br>
-                                    </div>
-                                  </div>
+                                        5.緊急準備金<br>                                    
+                                    </p>
                                 </div>
-                                <div class="accordion-item my-3">
-                                    <h2 class="accordion-header" id="flush-headingTwo">
-                                      <button class="accordion-button collapsed border" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                        Q：一般買房頭期款，要怎麼抓預算?
-                                      </button>
-                                    </h2>
-                                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                                      <div class="accordion-body bg-dark">
-                                        A：一般而言，頭期款估算方式是以欲購買房屋總價的20%-40%為頭期款準備金額，而實際上則會依銀行貸款成數多寡直接影響頭期款的占比。影響銀行貸款成數常見的因素如房屋種類、屋齡、坪數大小、區域..等因素納入考量；不同「房屋種類」分別可貸款成數約為：「預售屋」7-8成、「新成屋」6.5-7.5成、「中古屋」6-8成；而以不同「區域」預估可貸款成數分別為：「北部」7-8成、「中部」6.5-7成、「南部」5.5-7.5成、「東部」5.5-6成。
-                                      </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item my-3">
-                                    <h2 class="accordion-header" id="flush-headingThree">
-                                      <button class="accordion-button collapsed border" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                                        Q：如何計算每月房貸要繳多少?
-                                      </button>
-                                    </h2>
-                                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                                      <div class="accordion-body bg-dark">
-                                        A：房貸計算是以貸款總金額、貸款利率、貸款年限及寬限期綜合計算出來，您可諮詢銀行房貸相關人員或透過網路貸款試算工具幫您計算。舉例：房貸 900 萬分 30 年攤還，利率 2 %，約每年要付 18 萬利息，加上 900 / 30 = 30 萬，合為 48 萬 / 年，即 4 萬 / 月。
-                                      </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item my-3">
-                                    <h2 class="accordion-header" id="flush-headingFour">
-                                      <button class="accordion-button collapsed border" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                                        Q：買房還有哪些額外費用要支出?
-                                      </button>
-                                    </h2>
-                                    <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
-                                      <div class="accordion-body bg-dark">
-                                        A：額外費用包含：仲介費、代書費、保險、稅費...等。</br>
-                                        1.「仲介費」約為成交金額的1-2%</br>
-                                        2.「代書費」約1-3萬</br>
-                                        3.「保險費」如火災、地震險</br>
-                                        4.「稅費」又包含：</br>
-                                        -契稅：建物核定契價x6%</br>
-                                        -印花稅：土地及建物核定契價x0.1%</br>
-                                        -登記規費：(建物核定契價+土地申報地價)x0.1%+書狀費</br>
-                                      </div>
-                                    </div>
-                                </div>
-                               
-                            
-                               
                             </div>
+                            <div class="accordion-box my-3">
+                                <div class="cutom-accordion-btn">Q：一般買房頭期款，要怎麼抓預算?</div>
+                                <div class="panel bg-dark">
+                                    <p class="mt-3">
+                                        A：一般而言，頭期款估算方式是以欲購買房屋總價的20%-40%為頭期款準備金額，而實際上則會依銀行貸款成數多寡直接影響頭期款的占比。影響銀行貸款成數常見的因素如房屋種類、屋齡、坪數大小、區域..等因素納入考量；不同「房屋種類」分別可貸款成數約為：「預售屋」7-8成、「新成屋」6.5-7.5成、「中古屋」6-8成；而以不同「區域」預估可貸款成數分別為：「北部」7-8成、「中部」6.5-7成、「南部」5.5-7.5成、「東部」5.5-6成。                                
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="accordion-box my-3">
+                                <div class="cutom-accordion-btn">Q：如何計算每月房貸要繳多少?</div>
+                                <div class="panel bg-dark">
+                                    <p class="mt-3">
+                                        A：房貸計算是以貸款總金額、貸款利率、貸款年限及寬限期綜合計算出來，您可諮詢銀行房貸相關人員或透過網路貸款試算工具幫您計算。舉例：房貸 900 萬分 30 年攤還，利率 2 %，約每年要付 18 萬利息，加上 900 / 30 = 30 萬，合為 48 萬 / 年，即 4 萬 / 月。                                   
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="accordion-box my-3">
+                                <div class="cutom-accordion-btn">Q：買房還有哪些額外費用要支出?</div>
+                                <div class="panel bg-dark">
+                                    <p class="mt-3">
+                                        A：額外費用包含：仲介費、代書費、保險、稅費...等。<br>
+                                        1.「仲介費」約為成交金額的1-2%<br>
+                                        2.「代書費」約1-3萬<br>
+                                        3.「保險費」如火災、地震險<br>
+                                        4.「稅費」又包含：<br>
+                                        -契稅：建物核定契價x6%<br>
+                                        -印花稅：土地及建物核定契價x0.1%<br>
+                                        -登記規費：(建物核定契價+土地申報地價)x0.1%+書狀費<br>                             
+                                    </p>
+                                </div>
+                            </div>
+
+                            <script>
+                                var acc = document.getElementsByClassName("cutom-accordion-btn");
+                                var i;
+
+                                for (i = 0; i < acc.length; i++) {
+                                acc[i].addEventListener("click", function() {
+                                    this.classList.toggle("on");
+                                    var panel = this.nextElementSibling;
+                                    if (panel.style.maxHeight) {
+                                    panel.style.maxHeight = null;
+                                    } else {
+                                    panel.style.maxHeight = panel.scrollHeight + "px";
+                                    } 
+                                });
+                                }
+                            </script>
                         </div>
-                        
                     </div>
                 </div>
+                {% comment %} 右欄 個人資訊 {% endcomment %}
                 <div class="col-12 col-md-4 order-1 order-md-2 mt-2">
                     <div>
                         <img src="{% static 'house_manager/images/1.jpg' %}" class="img-fluid">
@@ -353,9 +347,8 @@
     </article>
 
     <footer class="footer bg-dark">
-        客服信箱：a0980319262@gmail.com <br> 客服電話：0422543484
-        
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        客服信箱：a0980319262@gmail.com <br> 客服電話：0422543484       
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

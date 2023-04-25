@@ -186,7 +186,7 @@ em{
     padding: 0.5rem 0.5rem;
     margin: 1rem 0.5rem;
     border: 1px solid white;
-    border-radius: 10px;
+    border-radius: 3px;
 }
 
 .case-link{
@@ -198,6 +198,58 @@ em{
     text-decoration: none;
     color: white;
 }
+
+/* =============== ⬇︎⬇︎⬇︎ styles for accordion ⬇︎⬇︎⬇︎ =============== */
+
+
+.accordion-box{
+    border: 1px solid white;
+    border-radius: 3px;
+
+}
+
+.cutom-accordion-btn {
+    background-color: white;
+    color: #444;
+    cursor: pointer;
+    padding: 12px 18px;
+    width: 100%;
+    /* border-bottom: 1px solid #444; */
+    /* border: 1px solid red;
+    border-radius:3px; */
+    text-align: left;
+    /* outline: none; */
+    font-size: 15px;
+    transition: 0.4s;
+  }
+  
+  .on, .cutom-accordion-btn:hover {
+    background-color: white;
+  }
+  
+  .cutom-accordion-btn:after {
+    content: '\002B';
+    color: #444;
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+  }
+  
+  .on:after {
+    content: "\2212";
+  }
+  
+  .panel {
+    padding: 0 18px;
+    /* border-top: 1px solid white; */
+    color: white;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+  }
+
+/* =============== ⬆︎⬆︎⬆︎ styles for accordion ⬆︎⬆︎⬆︎ =============== */
 
 .footer{
     color: #fff;
