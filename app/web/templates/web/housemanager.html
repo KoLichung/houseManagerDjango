@@ -65,17 +65,17 @@
                                 </a>
                               </li>
                               <li class="list">
-                                <a href="#seller">
+                                <a href="#testmonial">
                                   <span class="text text-white ">親友見證</span>
                                 </a>
                               </li>
                               <li class="list">
-                                <a href="#compare">
+                                <a href="#cases">
                                   <span class="text text-white ">精選案件</span>
                                 </a>
                               </li>
                               <li class="list">
-                                <a href="#steps">
+                                <a href="#faq">
                                   <span class="text text-white " >常見問題</span>
                                 </a>
                               </li>
@@ -141,7 +141,6 @@
                                 <li>品牌背書保證 眾多媒體的採訪已經讓我的名字就是一個品牌，因此您不 用擔心我會欺騙或是落跑，並且高知名度就是高曝光度，選擇吳宣宏就是一個最佳的售屋保證</li>
                             </ol>
                         </div>
-
                         <div id="buyer" style="padding-top: 70px; margin-top: -50px;">
                             <img class="img-fluid" src="{% static 'house_manager/images/4_secrets.jpg' %}">
                             <h2 class="text-center mb-3 border-text">為什麼在埔里買房要找 KEN？</h2>
@@ -158,32 +157,6 @@
                         </div>
                         <div id="compare" style="padding-top: 70px; margin-top: -50px;">
                             <span class="section-title">不怕比較</span>
-                            <h2>精選案件</h2>
-                            <div class="row">
-                                {% for case in cases %}
-                                <div class="col-12 col-md-12 col-lg-6">
-                                    
-                                    <div class="case-item">
-                                        <a class="case-link" href="{{case.case_link}}" target="_blank">
-                                            <div class="d-flex align-items-center">
-                                                <div class="me-3">
-                                                    <img src="{{case.image}}" class="img-fluid">
-                                                </div>
-                                                <div>
-                                                    <div>{{case.title}}</div>
-                                                    <div>{{case.type}} | {{case.units}} | {{case.price}}</div>
-                                                    <div>{{case.address}}</div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    
-                                </div>
-                                {% endfor %}
-                            </div>
-
-                            
-                            
 
                             <h2>來看看 KEN 跟傳統房仲的差距究竟有多大</h2>
                             <div class="teacher-feature-title">知名度｜默默無名vs台灣最知名的房仲</div>
@@ -198,7 +171,7 @@
                             <div>行銷方式更加符合現代人的習慣，我一直隨著 時代成長、不斷進步</div>
                            
                         </div>
-                        <div id="who" style="padding-top: 70px; margin-top: -50px;">
+                        <div id="testmonial" style="padding-top: 70px; margin-top: -50px;">
                             <h2 class="text-center mt-3 gold-text">應 該 來 找 KEN 的 人</h2>
                             <img class="img-fluid" src="{% static 'house_manager/images/5_are_you_one_of_them.jpg' %}">
                             {% comment %} <ul>
@@ -265,6 +238,101 @@
                             每周我都會接受各大電視台的採訪，分析目前市場的趨勢，讓我的專業能夠幫助各位評估自己目前適不適合買房、賣房，
                             我是KEN，隨時歡迎您來詢問，體驗專業的服務。
                         </div>
+                        <div id="cases" style="padding-top: 70px; margin-top: -50px;">
+                            <h2>精選案件</h2>
+                            <div class="row">
+                                {% for case in cases %}
+                                <div class="col-12 col-md-12 col-lg-6">
+                                    
+                                    <div class="case-item">
+                                        <a class="case-link" href="{{case.case_link}}" target="_blank">
+                                            <div class="d-flex align-items-center">
+                                                <div class="me-3">
+                                                    <img src="{{case.image}}" class="img-fluid">
+                                                </div>
+                                                <div>
+                                                    <div>{{case.title}}</div>
+                                                    <div>{{case.type}} | {{case.units}} | {{case.price}}</div>
+                                                    <div>{{case.address}}</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div id="faq" style="padding-top: 70px; margin-top: -50px;" class="mt-3 mb-5">
+                            <h2>常見問題</h2>
+                            <div class="accordion " id="accordionFlushExample">
+                                <div class="accordion-item my-3">
+                                  <h2 class="accordion-header" id="flush-headingOne">
+                                    <button class="accordion-button collapsed border" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                        Q：買房的主要支出項目有哪些?
+                                    </button>
+                                  </h2>
+                                  <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body bg-dark">
+                                        A：主要可分為五大項目<br>
+                                        1.頭期款<br>
+                                        2.銀行貸款<br>
+                                        3.額外費用<br>
+                                        4.裝潢費<br>
+                                        5.緊急準備金<br>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="accordion-item my-3">
+                                    <h2 class="accordion-header" id="flush-headingTwo">
+                                      <button class="accordion-button collapsed border" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                        Q：一般買房頭期款，要怎麼抓預算?
+                                      </button>
+                                    </h2>
+                                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                      <div class="accordion-body bg-dark">
+                                        A：一般而言，頭期款估算方式是以欲購買房屋總價的20%-40%為頭期款準備金額，而實際上則會依銀行貸款成數多寡直接影響頭期款的占比。影響銀行貸款成數常見的因素如房屋種類、屋齡、坪數大小、區域..等因素納入考量；不同「房屋種類」分別可貸款成數約為：「預售屋」7-8成、「新成屋」6.5-7.5成、「中古屋」6-8成；而以不同「區域」預估可貸款成數分別為：「北部」7-8成、「中部」6.5-7成、「南部」5.5-7.5成、「東部」5.5-6成。
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item my-3">
+                                    <h2 class="accordion-header" id="flush-headingThree">
+                                      <button class="accordion-button collapsed border" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                        Q：如何計算每月房貸要繳多少?
+                                      </button>
+                                    </h2>
+                                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                                      <div class="accordion-body bg-dark">
+                                        A：房貸計算是以貸款總金額、貸款利率、貸款年限及寬限期綜合計算出來，您可諮詢銀行房貸相關人員或透過網路貸款試算工具幫您計算。舉例：房貸 900 萬分 30 年攤還，利率 2 %，約每年要付 18 萬利息，加上 900 / 30 = 30 萬，合為 48 萬 / 年，即 4 萬 / 月。
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item my-3">
+                                    <h2 class="accordion-header" id="flush-headingFour">
+                                      <button class="accordion-button collapsed border" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                                        Q：買房還有哪些額外費用要支出?
+                                      </button>
+                                    </h2>
+                                    <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                                      <div class="accordion-body bg-dark">
+                                        A：額外費用包含：仲介費、代書費、保險、稅費...等。</br>
+                                        1.「仲介費」約為成交金額的1-2%</br>
+                                        2.「代書費」約1-3萬</br>
+                                        3.「保險費」如火災、地震險</br>
+                                        4.「稅費」又包含：</br>
+                                        -契稅：建物核定契價x6%</br>
+                                        -印花稅：土地及建物核定契價x0.1%</br>
+                                        -登記規費：(建物核定契價+土地申報地價)x0.1%+書狀費</br>
+                                      </div>
+                                    </div>
+                                </div>
+                               
+                            
+                               
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
                 <div class="col-12 col-md-4 order-1 order-md-2 mt-2">
