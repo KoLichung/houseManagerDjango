@@ -61,3 +61,11 @@ def housemanager(request):
     cases = HouseCase.objects.all()
 
     return render(request,'web/housemanager.html',{'cases':cases})
+
+def housemanager_demo(request):
+    # id = request.GET.get('manager')
+    # user = User.objects.get(id=id)
+    # return render(request,'web/housemanager.html',{'user':user})
+    cases = HouseCase.objects.all()
+
+    return render(request,'web/housemanager.html',{'cases':cases})
