@@ -93,6 +93,10 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     
 class HouseCase(models.Model):
+    user =  models.ForeignKey(
+        User,
+        on_delete=models.RESTRICT,
+    )
     title = models.CharField(max_length=100, default='', blank = True, null=True)
     address = models.CharField(max_length=20, default='', blank = True, null=True)
     #3房2廳、店面、土地
@@ -103,6 +107,7 @@ class HouseCase(models.Model):
     #圖片連結
     image = models.CharField(max_length=255, default='', blank = True, null=True)
     case_link = models.CharField(max_length=255, default='', blank = True, null=True)
+    shop_id = models.CharField(max_length=20, default='', blank = True, null=True)
 
 class FAQ(models.Model):
     user =  models.ForeignKey(
