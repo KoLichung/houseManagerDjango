@@ -39,7 +39,9 @@
 
               <div class="col-12 col-md-5 col-lg-4 align-items-center">
                 <div class="text-white text-start my-3">
-                    <img class="avatar rounded-circle" src="{{ user.avatar.url }}">
+                    {% if user.avatar %}
+                        <img class="avatar rounded-circle" src="{{ user.avatar.url }}">
+                    {% endif %}
                     <span class="name">{{user.nickname}}</span> 
                 </div>
                 <div class="video-title h2 text-white mb-2">{{user.video_title}}</div>
@@ -165,7 +167,9 @@
                 {% comment %} 右欄 個人資訊 {% endcomment %}
                 <div class="col-12 col-md-4 order-1 order-md-2 mt-2">
                     <div>
+                        {% if user.main_image %}
                         <img src="{{ user.main_image.url }}" class="img-fluid">
+                        {% endif %}
                     </div>
 
                     <div class="text-white mx-3 mx-sm-1">
