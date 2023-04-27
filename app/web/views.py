@@ -54,8 +54,10 @@ def pricing(request):
     return render(request,'web/pricing.html')
 
 def housemanager_demo(request):
-
-    return render(request,'web/housemanager_demo.html')
+    cases = HouseCase.objects.all()
+    return render(request,'web/housemanager_demo.html', {
+        'cases':cases,
+    })
 
 def housemanager(request):
     manager_id = request.GET.get('manager')

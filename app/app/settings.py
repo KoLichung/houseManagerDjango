@@ -26,6 +26,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     '202.182.96.99',
+    'localhost',
+    'housemanager.com.tw',
 ]
 
 ADMINS = (
