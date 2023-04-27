@@ -17,10 +17,26 @@
                 <div>
                   <b>主要圖片</b> 
                   
-                  <div>
+                  {% comment %} <div>
                     <input type="hidden" id="post" name="post" value={{user.phone}}>
                     {{ form.phone.as_hidden }}
                     {{ form.main_image }}
+                  </div> {% endcomment %}
+
+                  <div>
+                    <form method="post" id="image_post" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      <button class="blue-btn mt-3" type="button" id="ImageBtn" >
+                        <span class="fas fa-image"></span>
+                        上傳主要圖片
+                      </button><br><br>
+                      <input type="hidden" id="userId" name="userId" value={{user.phone}}>
+                      
+                      {{ form.as_hidden }}
+                      <div id="form2-container" type="hidden" style="display: none;">
+                        {{form.main_image}}
+                      </div>
+                    </form>
                   </div>
 
                   <div>
@@ -40,5 +56,21 @@
       </div>
     </div>
 </div>
+
+<script>
+  const ImageBtn = document.getElementById('ImageBtn');
+  const id_image = document.getElementById('id_main_image');
+  const image_post = document.getElementById('image_post');
+  console.log(id_image)
+  ImageBtn.addEventListener('click',function(){
+    id_image.click();
+    console.log('click')
+  })
+  id_image.addEventListener('change',function(){
+    console.log('submit')
+    image_post.submit();
+    
+  });
+</script>
 
 {% endblock %}

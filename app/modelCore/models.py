@@ -50,6 +50,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
+    is_passed = models.BooleanField(default=False)
+
     objects = UserManager()
 
     company = models.CharField(max_length=255, default='', blank=True, null=True)
@@ -66,6 +68,8 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     #置頂影片
     video_link = models.CharField(max_length=255, default='', blank=True, null=True)
+    video_id = models.CharField(max_length=30, default='', blank=True, null=True)
+
     video_title = models.CharField(max_length=255, default='', blank=True, null=True)
     video_subtitle = models.CharField(max_length=255, default='', blank=True, null=True)
 
@@ -89,7 +93,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     #廣告追蹤設定
     fb_pixel  = models.CharField(max_length=30, unique=True, blank=True, null=True)
     google_id  = models.CharField(max_length=30, unique=True, blank=True, null=True)
-
 
     
 class HouseCase(models.Model):

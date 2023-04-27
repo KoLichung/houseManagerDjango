@@ -14,19 +14,38 @@
           </div>
 
           <!-- 內容 -->
-          <div class="d-flex justify-content-between">
+          <div class="d-flex">
             <div class="mb-3">
               頭像
             </div>
+            &nbsp;&nbsp;&nbsp;
+            
+            {% comment %} <button class="blue-btn" type="submit">選擇照片</button> {% endcomment %}
 
-            <div class="text-end">
-              <button class="blue-btn" type="submit">選擇照片</button>
+            <div>
+              <form method="post" id="image_post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <button class="blue-btn" type="button" id="ImageBtn" >
+                  <span class="fas fa-image"></span>
+                  上傳頭像
+                </button><br><br>
+                
+                {{ avatar_form.as_hidden }}
+                <div id="form2-container" type="hidden" style="display: none;">
+                  {{avatar_form.avatar}}
+                </div>
+              </form>
             </div>
+            
           </div>
 
           <div class="row my-2 ms-1">
             <div class="col-6 p-1">
-              <img class="rounded-circle  mb-2" style="width: 150px; height: 150px;" src="{% static 'backboard/assets/img/sample.jpg' %}" alt="" />
+              {% if user.avatar %}
+                <img class="rounded-circle  mb-2" style="width: 150px; height: 150px;" src="{{ user.avatar.url }}" alt="" />
+              {% else %}
+                <img class="rounded-circle  mb-2" style="width: 150px; height: 150px;" src="{% static 'backboard/assets/img/sample.jpg' %}" alt="" />
+              {% endif %}
             </div>
           </div>
 
@@ -75,5 +94,21 @@
       </div>
     </div>
 </div>
+
+<script>
+  const ImageBtn = document.getElementById('ImageBtn');
+  const id_image = document.getElementById('id_avatar');
+  const image_post = document.getElementById('image_post');
+  console.log(id_image)
+  ImageBtn.addEventListener('click',function(){
+    id_image.click();
+    console.log('click')
+  })
+  id_image.addEventListener('change',function(){
+    console.log('submit')
+    image_post.submit();
+    
+  });
+</script>
 
 {% endblock %}

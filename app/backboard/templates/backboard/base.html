@@ -73,7 +73,9 @@
               <div class="navbar-vertical-content scrollbar">
   
                 <ul class="navbar-nav flex-column mb-3" id="navbarVerticalNav">
-                
+                  
+                  <a href="{% url 'housemanager' %}?manager={{user.id}}"><button class="btn btn-success d-block w-100" type="button">按我預覽</button></a>
+
                   <li>
                     <a class="nav-link" href="{% url 'top_video' %}" role="button" data-bs-toggle="" aria-expanded="false">
                       <div class="d-flex align-items-center">

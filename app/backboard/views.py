@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from modelCore.models import User, FAQ
 import urllib
 import datetime
-from modelCore.forms import AboutForm, TestimonialForm, UserMainImageForm
+from modelCore.forms import AboutForm, TestimonialForm, UserMainImageForm, UserAvatarForm
 from django.contrib import auth
 from django.contrib.auth import authenticate
 
@@ -22,6 +22,12 @@ def top_video(request):
     if request.method == 'POST':
 
         user.video_link = request.POST.get('video_link')
+        
+        if 'v=' in user.video_link:
+            index = user.video_link.index('v=')
+            video_id = user.video_link[index+2:]
+            user.video_id = video_id
+
         user.video_title = request.POST.get('video_title')
         user.video_subtitle = request.POST.get('video_subtitle')
         user.save()
@@ -52,7 +58,13 @@ def about(request):
         return redirect('/login')
 
     user = request.user
+
     if request.method == 'POST':
+        if request.FILES.get('avatar', False):
+            user.avatar = request.FILES['avatar']
+            user.save()
+    
+    if request.method == 'POST' and 'nickname' in request.POST:
         user.nickname = request.POST.get('nickname')
         user.phone_number = request.POST.get('phone_number')
         user.line_id = request.POST.get('line_id')
@@ -60,8 +72,11 @@ def about(request):
         user.save()  
         return redirect_params('about',{'user':user})
     
-    form = AboutForm(instance=user)
-    return render(request,'backboard/about.html',{'user':user, 'form':form})
+    form = AboutForm(instance=user
+                     )
+    avatar_form = UserAvatarForm()
+
+    return render(request,'backboard/about.html',{'user':user, 'form':form, 'avatar_form':avatar_form})
 
 def testimonial(request):
     if not request.user.is_authenticated:
