@@ -17,7 +17,7 @@ ROOT_DIR = (
 env = environ.Env()
 env.read_env(str(ROOT_DIR.path(".env")))
 
-def crawl_manager_cases_by_requests(url):
+def crawl_manager_cases_by_requests(user, url):
     # url = 'https://www.591.com.tw/broker24177-sale'
     sale_url = f'{url}-sale'
     print(sale_url)
@@ -98,8 +98,7 @@ def crawl_manager_cases_by_requests(url):
                 # server 沒這個資料, 則增加
                 # !!! server 有這個資料, 但 list 沒這個資料, 則刪除~ => 還沒做
 
-                if HouseCase.objects.filter(case_link=caseLink).count() == 0:
-                    user = User.objects.get(case_link__contains=shop_id)
+                if HouseCase.objects.filter(case_link=caseLink, user=user).count() == 0:
                     houseCase = HouseCase()
                     houseCase.user = user
                     houseCase.title = title

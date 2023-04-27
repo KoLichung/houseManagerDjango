@@ -24,6 +24,32 @@
                     <button class="blue-btn" type="submit" name="post" value='save' onclick="location.href='{% url 'cases' %}'">儲存</button>
                 </div>
             </form>
+
+            <div id="cases" style="padding-top: 70px; margin-top: -50px;">
+                <div class="row">
+                    {% for case in cases %}
+                    <div class="col-12 col-md-12 col-lg-6">
+                        
+                        <div class="case-item">
+                            <a class="case-link" href="{{case.case_link}}" target="_blank">
+                                <div class="d-flex align-items-center">
+                                    <div class="me-3">
+                                        <img src="{{case.image}}" class="img-fluid">
+                                    </div>
+                                    <div>
+                                        <div>{{case.title}}</div>
+                                        <div>{{case.type}} | {{case.units}} | {{case.price}}</div>
+                                        <div>{{case.address}}</div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            
         </div>
       </div>
     </div>

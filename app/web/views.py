@@ -54,7 +54,7 @@ def pricing(request):
     return render(request,'web/pricing.html')
 
 def housemanager_demo(request):
-    cases = HouseCase.objects.all()
+    cases = HouseCase.objects.all()[:15]
     return render(request,'web/housemanager_demo.html', {
         'cases':cases,
     })
@@ -64,7 +64,7 @@ def housemanager(request):
     if manager_id is not None:
         user = User.objects.get(id=manager_id)
         user_shop_id = user.case_link.replace('https://www.591.com.tw/broker','')
-        cases = HouseCase.objects.filter(shop_id=user_shop_id)
+        cases = HouseCase.objects.filter(user=user)
         faqs = FAQ.objects.filter(user=user).order_by('-id')
         print(user_shop_id)
        

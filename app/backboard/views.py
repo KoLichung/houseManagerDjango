@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.core.paginator import Paginator
 from django.http import HttpResponse
-from modelCore.models import User, FAQ
+from modelCore.models import User, FAQ, HouseCase
 import urllib
 import datetime
 from modelCore.forms import AboutForm, TestimonialForm, UserMainImageForm, UserAvatarForm
@@ -97,9 +97,17 @@ def cases(request):
     if request.method == 'POST':
         user.case_link = request.POST.get('case_link')
         user.save()
+        
+        HouseCase.objects.filter(user=user).delete()
+
+        from seleniumApp.tasks import crawl_manager_cases_by_requests
+        crawl_manager_cases_by_requests(user, user.case_link)
+
         return redirect_params('cases',{'user':user})
 
-    return render(request,'backboard/cases.html',{'user':user})
+    cases = HouseCase.objects.filter(user=user)
+
+    return render(request,'backboard/cases.html',{'user':user, 'cases':cases})
 
 def faq(request):
     if not request.user.is_authenticated:
