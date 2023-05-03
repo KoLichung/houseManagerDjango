@@ -1,0 +1,90 @@
+{% extends 'backboard/base.html' %} {% block content %}
+{% load static %}
+
+<div class="g-3 mb-3">
+    <div class="col-lg-12 ps-lg-2 mb-3">
+
+      <div class="card h-lg-100 mb-4">
+        <div class="card-header mb-2">
+          <div class="mb-3">
+            <span class="section-title">目前方案：免費</span> (升級後即可公開分享您的數位名片)
+          </div>
+
+          {% comment %} 月繳 {% endcomment %}
+          <div class="container-fluid">
+            <div class="border rounded">
+                <div class="row d-flex mx-0">
+                    <div class="col-12 py-4 col-sm-3 plan-title text-white position-relative rounded-start">
+                        <div class="position-absolute top-50 start-50 translate-middle section-title text-center">
+                            月繳方案<br>
+                            ＄<span style="font-size: 18pt">499</span> /月
+                        </div>
+                    </div>
+                    <div class="col-12 py-4 col-sm-6 plan-content align-self-center">
+                        <ul class="list-unstyled py-md-4 py-lg-2 my-0">
+                            <li class="">
+                                <span class="fas fa-check text-primary" data-fa-transform="shrink-2"> </span>
+                                &emsp;個人數位名片
+                            </li>
+                            <li class="">
+                                <span class="fas fa-check text-primary" data-fa-transform="shrink-2"></span>
+                                &emsp;自動同步 591 案件
+                            </li>
+                            <li class="">
+                                <span class="fas fa-check text-primary" data-fa-transform="shrink-2"></span>
+                                &emsp;廣告追蹤 
+                            </li>
+                            <li class="">
+                                <span class="fas fa-check text-primary" data-fa-transform="shrink-2"></span>
+                                &emsp;一年總計 $ 5988
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-12 my-4 text-center col-sm-3 plan-content align-self-center">
+                        <a class="border-btn" href="{% url 'upgrade' %}">選擇</a>
+                    </div>
+                </div>
+            </div>
+          </div>
+          {% comment %} 年繳 {% endcomment %}
+          <div class="container-fluid mt-3">
+            <div class="border rounded">
+                <div class="row d-flex mx-0">
+                    <div class="col-12 py-4 col-sm-3 plan-title text-white position-relative rounded-start">
+                        <div class="position-absolute top-50 start-50 translate-middle section-title text-center">
+                            年繳方案<br>
+                            平均<br>
+                            ＄<span style="font-size: 18pt">375</span> /月
+                        </div>
+                    </div>
+                    <div class="col-12 py-4 col-sm-6 plan-content align-self-center">
+                        <ul class="list-unstyled py-md-4 py-lg-2 my-0">
+                            <li class="">
+                                <span class="fas fa-check text-primary" data-fa-transform="shrink-2"> </span>
+                                &emsp;個人數位名片</li>
+                            <li class="">
+                                <span class="fas fa-check text-primary" data-fa-transform="shrink-2"></span>
+                                &emsp;自動同步 591 案件</li>
+                            <li class="">
+                                <span class="fas fa-check text-primary" data-fa-transform="shrink-2"></span>
+                                &emsp;廣告追蹤 </li>
+                            <li class="">
+                                <span class="fas fa-check text-primary" data-fa-transform="shrink-2"></span>
+                                &emsp;<span style="color: red;">一年總計 $ 4500</span></li>
+                        </ul>
+                    </div>
+                    <div class="col-12 my-4 text-center col-sm-3 plan-content align-self-center">
+                        <a class="border-btn" href="{% url 'upgrade' %}">選擇</a>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+          
+        </div>
+      </div>
+
+    </div>  
+</div>
+
+{% endblock %}
