@@ -15,6 +15,7 @@ urlpatterns = [
     path('bills', views.bills, name = 'bills'), 
     path('plans', views.plans, name = 'plans'), 
     path('upgrade', views.upgrade, name = 'upgrade'), 
+    path('payment', views.payment, name = 'payment'), 
     path('setting', views.setting, name = 'setting'), 
     path('logout', views.logout, name='backboard_logout'),
 ]

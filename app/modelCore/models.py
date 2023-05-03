@@ -135,4 +135,8 @@ class Bills(models.Model):
     pay_date = models.DateField(null=True)
     #實際到期日
     expire_date = models.DateField(null=True)
+    #選擇方案 monthly, yearly
+    plan = models.CharField(max_length=10, default='', blank = True, null=True)
+
+
 

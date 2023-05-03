@@ -41,7 +41,7 @@
                         </ul>
                     </div>
                     <div class="col-12 my-4 text-center col-sm-3 plan-content align-self-center">
-                        <a class="border-btn" href="{% url 'upgrade' %}">選擇</a>
+                        <button class="border-btn" type="submit" name="plan" value='monthly' onclick="location.href='{% url 'upgrade' %}'">選擇</button>
                     </div>
                 </div>
             </div>
@@ -74,7 +74,7 @@
                         </ul>
                     </div>
                     <div class="col-12 my-4 text-center col-sm-3 plan-content align-self-center">
-                        <a class="border-btn" href="{% url 'upgrade' %}">選擇</a>
+                        <button class="border-btn" type="submit" name="plan" value='yearly' onclick="location.href='{% url 'upgrade' %}'">選擇</button>
                     </div>
                 </div>
             </div>

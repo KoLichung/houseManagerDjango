@@ -177,6 +177,8 @@ def plans(request):
     if not request.user.is_authenticated:
         return redirect('/login')
     
+
+    
     return render(request,'backboard/plans.html')
 
 def upgrade(request):
@@ -184,6 +186,12 @@ def upgrade(request):
         return redirect('/login')
     
     return render(request,'backboard/upgrade.html')
+
+def payment(request):
+    if not request.user.is_authenticated:
+        return redirect('/login')
+    
+    return render(request,'backboard/payment.html')
 
 def setting(request):
     if not request.user.is_authenticated:
