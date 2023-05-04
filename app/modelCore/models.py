@@ -127,14 +127,19 @@ class Bills(models.Model):
         User,
         on_delete=models.RESTRICT,
     )
+    
     #繳款金額			
     price = models.IntegerField(default=0)
+    
     #服務時長
-    duration = models.IntegerField(default=0)
+    time_period = models.IntegerField(default=0)
+
     #繳款日
     pay_date = models.DateField(null=True)
+    
     #實際到期日
     expire_date = models.DateField(null=True)
+    
     #選擇方案 monthly, yearly
     plan = models.CharField(max_length=10, default='', blank = True, null=True)
 
