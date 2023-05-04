@@ -63,12 +63,9 @@ def housemanager(request):
     manager_id = request.GET.get('manager')
     if manager_id is not None:
         user = User.objects.get(id=manager_id)
-        user_shop_id = user.case_link.replace('https://www.591.com.tw/broker','')
+        # user_shop_id = user.case_link.replace('https://www.591.com.tw/broker','')
         cases = HouseCase.objects.filter(user=user)
         faqs = FAQ.objects.filter(user=user).order_by('-id')
-        print(user_shop_id)
-       
-        
     else:
         user = None
 

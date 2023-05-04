@@ -23,6 +23,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        img {
+          width: 100%;
+        }
+    </style>
+
 </head>
 <body class="bg-dark">
 
@@ -98,8 +105,8 @@
                 <div class="col-12 col-md-8 order-2 order-md-1 mt-2 text-white">
                     <div class="mx-3 mx-sm-1">
                         {% comment %} 關於我 {% endcomment %}
-                        <div id="about" style="padding-top: 70px; margin-top: -50px;">
-                            <span class="section-title">我是誰</span>
+                        <div id="about">
+                            {% comment %} <span class="section-title">我是誰</span> {% endcomment %}
                             <div>{{ user.about_me|safe }}</div>
                         </div>
 

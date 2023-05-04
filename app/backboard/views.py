@@ -72,8 +72,7 @@ def about(request):
         user.save()  
         return redirect_params('about',{'user':user})
     
-    form = AboutForm(instance=user
-                     )
+    form = AboutForm(instance=user)
     avatar_form = UserAvatarForm()
 
     return render(request,'backboard/about.html',{'user':user, 'form':form, 'avatar_form':avatar_form})
@@ -176,8 +175,6 @@ def bills(request):
 def plans(request):
     if not request.user.is_authenticated:
         return redirect('/login')
-    
-
     
     return render(request,'backboard/plans.html')
 

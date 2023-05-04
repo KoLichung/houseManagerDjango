@@ -58,15 +58,15 @@
             <label class="form-label" for="promo_code">輸入折扣碼</label>
             <div class="container-fluid px-0">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-3">
                         <input class="form-control" id="promo_code" name="promo_code" type="text"/>
                     </div>
-                    <div class="col-3 text-start">
+                    <div class="col-1 text-start">
                         <button class="green-btn btn-sm">套用</button>
                     </div>
                 </div>
             </div>
-            <div class="mt-1">折扣碼套用後優惠為 首月月繳 $399!</div>
+            {% comment %} <div class="mt-1">折扣碼套用後優惠為 首月月繳 $399!</div> {% endcomment %}
 
             <div class="mt-4 text-end">
                 <btn class="orange-btn btn-sm " onclick="location.href='{% url 'payment' %}'">付款</btn>

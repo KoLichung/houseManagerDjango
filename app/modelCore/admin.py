@@ -4,8 +4,8 @@ from .models import User, HouseCase
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'phone', 'company', 'serve_place', 'email')
-    search_fields = ['serve_place','name']
+    list_display = ('id','nickname','name','phone','company','serve_place','email')
+    search_fields = ['serve_place','name','nickname']
 
 @admin.register(HouseCase)
 class HouseCaseAdmin(admin.ModelAdmin):
