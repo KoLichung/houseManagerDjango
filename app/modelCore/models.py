@@ -82,10 +82,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     phone_number = models.CharField(max_length=10, unique=True, blank=True, null=True)
     line_id  = models.CharField(max_length=10, unique=True, blank=True, null=True)
 
-    about_me = RichTextUploadingField(config_name='about_me', default='')
+    about_me = RichTextUploadingField(config_name='about_me', default='', blank=True, null=True)
     
     #親友見證
-    testimonial = RichTextUploadingField(config_name='testimonial', default='')
+    testimonial = RichTextUploadingField(config_name='testimonial', default='', blank=True, null=True)
     
     #591連結
     case_link = models.CharField(max_length=255, default='', blank=True, null=True)
