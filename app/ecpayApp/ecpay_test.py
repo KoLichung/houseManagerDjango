@@ -3,7 +3,7 @@ from django.test import TestCase
 import importlib.util
 spec = importlib.util.spec_from_file_location(
     "ecpay_payment_sdk",
-    "app/ecpayApp/ecpay_payment_sdk.py"
+    "ecpayApp/ecpay_payment_sdk.py"
 )
 module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(module)
