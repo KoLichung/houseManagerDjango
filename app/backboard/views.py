@@ -8,6 +8,9 @@ from modelCore.forms import AboutForm, TestimonialForm, UserMainImageForm, UserA
 from django.contrib import auth
 from django.contrib.auth import authenticate
 
+from ecpayApp.ecpay_test import main
+from django.views.decorators.csrf import csrf_exempt
+
 # Create your views here.
 
 def logout(request):
@@ -188,7 +191,8 @@ def payment(request):
     if not request.user.is_authenticated:
         return redirect('/login')
     
-    return render(request,'backboard/payment.html')
+    # return render(request,'backboard/payment.html')
+    return redirect('http://localhost:8000/payment/ecpay/')
 
 def setting(request):
     if not request.user.is_authenticated:
@@ -202,6 +206,7 @@ def setting(request):
         return redirect_params('setting',{'user':user})
 
     return render(request,'backboard/setting.html',{'user':user})
+
 
 
 # ===========================================
