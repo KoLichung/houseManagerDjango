@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'web',
     'backboard',
     'ckeditor',
+    'ecpayApp',
 ]
 
 MIDDLEWARE = [
