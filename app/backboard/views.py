@@ -192,7 +192,7 @@ def payment(request):
         return redirect('/login')
     
     # return render(request,'backboard/payment.html')
-    return redirect('http://localhost:8000/payment/ecpay/')
+    return redirect_params('ecpayApp:ecpay',{'test':'test content'})
 
 def setting(request):
     if not request.user.is_authenticated:
