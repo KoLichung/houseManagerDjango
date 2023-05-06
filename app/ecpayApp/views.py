@@ -10,6 +10,7 @@ logger = logging.getLogger(__file__)
 def ecpay_view(request):
     return HttpResponse(main())
 
+@csrf_exempt
 def ecpay_callback(request):
     logger.info(request.body.decode('utf-8'))
     return HttpResponse('1|OK')
