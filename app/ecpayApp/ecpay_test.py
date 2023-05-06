@@ -1,13 +1,15 @@
 from django.test import TestCase
-
 import importlib.util
+import os
+from datetime import datetime
+
+
 spec = importlib.util.spec_from_file_location(
     "ecpay_payment_sdk",
-    "ecpayApp/ecpay_payment_sdk.py"
+    os.path.dirname(os.path.realpath(__file__ ))+"/ecpay_payment_sdk.py",
 )
 module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(module)
-from datetime import datetime
 
 def main():
 
@@ -17,23 +19,24 @@ def main():
         'MerchantTradeDate': datetime.now().strftime("%Y/%m/%d %H:%M:%S"),
         'PaymentType': 'aio',
         'TotalAmount': 2000, #商品金額
-        'TradeDesc': '訂單測試', #交易描述
-        'ItemName': '商品1#商品2', #商品名稱，用井字號當分行 
+        'TradeDesc': '訂閱房仲名片網服務', #交易描述
+        'ItemName': '房仲名片網，年訂閱', #商品名稱，用井字號當分行 
         
-        # 付款完成通知回傳網址
-        'ReturnURL': 'https://www.ecpay.com.tw/return_url.php', 
+        # 付款完成通知回傳網址 待改
+        'ReturnURL': 'https://housemanager.com.tw/payment/ecpay_callback', 
 
         'ChoosePayment': 'Credit', # 顧客的付費方式
 
         # 結帳後，先導到 OrderResultURL，從綠界頁面跳回的頁面
         # 如果沒有參數才會跳轉到 ClientBackURL
-        'ClientBackURL': 'https://www.ecpay.com.tw/client_back_url.php',
+        'ClientBackURL': 'http://localhost:8000/backboard/bills',
+        # 'ClientBackURL': 'https://housemanager.com.tw/backboard/bills',
         'ItemURL': 'https://www.ecpay.com.tw/item_url.php', # 商品資訊頁面
-        'Remark': '交易備註',
+        'Remark': '年訂閱',
         'ChooseSubPayment': '',
         
         # 結帳成功/失敗後的結果頁面，告知顧客本次的結帳結果
-        'OrderResultURL': 'https://www.ecpay.com.tw/order_result_url.php',
+        # 'OrderResultURL': 'http://localhost:8000/backboard/bills',
         'NeedExtraPaidInfo': 'Y',
         'DeviceSource': '',
         'IgnorePayment': '',
@@ -86,16 +89,23 @@ def main():
         'PeriodAmount': 2000, # 交易金額[TotalAmount]設定金額必須和授權金額[PeriodAmount]相同。
         'PeriodType': 'M',
         'Frequency': '1',
-        'ExecTimes': '2',
-        'PeriodReturnURL': 'https://www.ecpay.com.tw/receive.php'
+        'ExecTimes': '99',
+        'PeriodReturnURL': 'https://housemanager.com.tw/payment/ecpay_callback' #每次執行完,會返回資料到這個網址,待改
     }
 
-    # 建立實體
+    # 建立實體 測試
     ecpay_payment_sdk = module.ECPayPaymentSdk(
         MerchantID='3002599',
         HashKey='spPjZn66i0OhqJsQ',
         HashIV='hT5OJckN45isQTTs'
     )
+
+    # 建立實體 正式
+    # ecpay_payment_sdk = module.ECPayPaymentSdk(
+    #     MerchantID='3376795',
+    #     HashKey='aNxMNp2xKcmMLz8Z',
+    #     HashIV='JXYm3SkKWno28V3O'
+    # )
 
     # 合併延伸參數
     order_params.update(extend_params_1)
