@@ -42,7 +42,7 @@ def main():
         'IgnorePayment': '',
         'PlatformID': '',
         'InvoiceMark': 'N',
-        'CustomField1': '',
+        'CustomField1': '4', #可以用來放 user_id
         'CustomField2': '',
         'CustomField3': '',
         'CustomField4': '',

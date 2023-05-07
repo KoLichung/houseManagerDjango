@@ -93,8 +93,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     #廣告追蹤設定
     fb_pixel  = models.CharField(max_length=30, unique=True, blank=True, null=True)
     google_id  = models.CharField(max_length=30, unique=True, blank=True, null=True)
-
-    
+ 
 class HouseCase(models.Model):
     user =  models.ForeignKey(
         User,
@@ -122,12 +121,18 @@ class FAQ(models.Model):
     body = models.TextField(default='', blank = True, null=True)
     create_date = models.DateField(blank = True, null=True)
 
-class Bills(models.Model):
+class Order(models.Model):
     user =  models.ForeignKey(
         User,
         on_delete=models.RESTRICT,
     )
     
+    STATE_CHOICES = [
+        ('UNPAID', '未付款'),
+        ('PAID', '已付款'),
+    ]
+    state =  models.CharField(max_length=20, choices=STATE_CHOICES,default='UNPAID')
+
     #繳款金額			
     price = models.IntegerField(default=0)
     
@@ -142,6 +147,103 @@ class Bills(models.Model):
     
     #選擇方案 monthly, yearly
     plan = models.CharField(max_length=10, default='', blank = True, null=True)
+    
+    # ====== 以下為綠界回傳欄位
+    amount = models.IntegerField(default=0)
+    auth_code = models.CharField(max_length=25, default='', blank = True, null=True)
+    card4no = models.CharField(max_length=25, default='', blank = True, null=True)
+    card6no = models.CharField(max_length=25, default='', blank = True, null=True)
+    CustomField1 = models.CharField(max_length=25, default='', blank = True, null=True)
+    ExecTimes = models.IntegerField(default=0)
+    Frequency = models.IntegerField(default=0)
+    gwsr = models.CharField(max_length=25, default='', blank = True, null=True)
+    MerchantID = models.CharField(max_length=25, default='', blank = True, null=True)
+    MerchantTradeNo = models.CharField(max_length=30, default='', blank = True, null=True)
+
+    PaymentDate = models.CharField(max_length=30, default='', blank = True, null=True)
+    PaymentType = models.CharField(max_length=30, default='', blank = True, null=True)
+    PaymentTypeChargeFee = models.CharField(max_length=20, default='', blank = True, null=True)
+
+    PeriodAmount = models.IntegerField(default=0)
+    PeriodType = models.CharField(max_length=10, default='', blank = True, null=True)
+    process_date = models.CharField(max_length=30, default='', blank = True, null=True)
+    RtnCode = models.CharField(max_length=10, default='', blank = True, null=True)
+    RtnMsg = models.CharField(max_length=30, default='', blank = True, null=True)
+
+    SimulatePaid = models.CharField(max_length=10, default='', blank = True, null=True)
+    TotalSuccessAmount = models.IntegerField(default=0)
+    TotalSuccessTimes = models.IntegerField(default=0)
+    TradeAmt = models.IntegerField(default=0)
+    TradeDate = models.CharField(max_length=30, default='', blank = True, null=True)
+    TradeNo = models.CharField(max_length=50, default='', blank = True, null=True) #可能會有多次回傳,但這個欄位應該是唯一的
+    CheckMacValue = models.CharField(max_length=125, default='', blank = True, null=True)
+
+
+# class Payment(models.Model):
+
+#     order = models.ForeignKey(
+#         Order,
+#         on_delete=models.RESTRICT,
+#         default=''
+#     )
+
+#     # {"amount": "2000", 
+#     # "auth_code": "777777", 
+#     # "card4no": "2222", 
+#     # "card6no": "431195", 
+#     # "CustomField1": "4"
+#     # "ExecTimes": "99", 
+#     # "Frequency": "1", 
+#     # "gwsr": "12609859", 
+#     # "MerchantID": "3002599", 
+#     # "MerchantTradeNo": "NO20230506085721", 
+#     # "PaymentDate": "2023/05/06 16:57:53", 
+#     # "PaymentType": "Credit_CreditCard", 
+#     # "PaymentTypeChargeFee": "49", 
+#     # "PeriodAmount": "2000", 
+#     # "PeriodType": "M", 
+#     # "process_date": "2023/05/06 16:57:53", 
+#     # "RtnCode": "1", 
+#     # "RtnMsg": "交易成功", 
+#     # "SimulatePaid": "0", 
+#     # "TotalSuccessAmount": "2000", 
+#     # "TotalSuccessTimes": "1", 
+#     # "TradeAmt": "2000", 
+#     # "TradeDate": "2023/05/06 16:57:21", 
+#     # "TradeNo": "2305061657216063", 
+#     # "CheckMacValue": "ACFBFD1183BF53574F3B13D41D9C7D098CF04355755287D2032E0145DBDE6783"}
+
+#     # ====== 以下為綠界回傳欄位
+#     amount = models.IntegerField(default=0)
+#     auth_code = models.CharField(max_length=25, default='', blank = True, null=True)
+#     card4no = models.CharField(max_length=25, default='', blank = True, null=True)
+#     card6no = models.CharField(max_length=25, default='', blank = True, null=True)
+#     CustomField1 = models.CharField(max_length=25, default='', blank = True, null=True)
+#     ExecTimes = models.IntegerField(default=0)
+#     Frequency = models.IntegerField(default=0)
+#     gwsr = models.CharField(max_length=25, default='', blank = True, null=True)
+#     MerchantID = models.CharField(max_length=25, default='', blank = True, null=True)
+#     MerchantTradeNo = models.CharField(max_length=30, default='', blank = True, null=True)
+
+#     PaymentDate = models.CharField(max_length=30, default='', blank = True, null=True)
+#     PaymentType = models.CharField(max_length=30, default='', blank = True, null=True)
+#     PaymentTypeChargeFee = models.CharField(max_length=20, default='', blank = True, null=True)
+
+#     PeriodAmount = models.IntegerField(default=0)
+#     PeriodType = models.CharField(max_length=10, default='', blank = True, null=True)
+#     process_date = models.CharField(max_length=30, default='', blank = True, null=True)
+#     RtnCode = models.CharField(max_length=10, default='', blank = True, null=True)
+#     RtnMsg = models.CharField(max_length=30, default='', blank = True, null=True)
+
+#     SimulatePaid = models.CharField(max_length=10, default='', blank = True, null=True)
+#     TotalSuccessAmount = models.IntegerField(default=0)
+#     TotalSuccessTimes = models.IntegerField(default=0)
+#     TradeAmt = models.IntegerField(default=0)
+#     TradeDate = models.CharField(max_length=30, default='', blank = True, null=True)
+#     TradeNo = models.CharField(max_length=50, default='', blank = True, null=True)
+#     CheckMacValue = models.CharField(max_length=125, default='', blank = True, null=True)
+
+    
 
 
 
