@@ -92,11 +92,13 @@
                                 <span class="text text-white ">關於我</span>
                             </a>
                             </li>
-                            <li class="list">
+
+                            {% comment %} <li class="list">
                             <a href="#testmonial">
                                 <span class="text text-white ">親友見證</span>
                             </a>
-                            </li>
+                            </li> {% endcomment %}
+
                             <li class="list">
                             <a href="#cases">
                                 <span class="text text-white ">精選案件</span>
@@ -129,10 +131,10 @@
                             <div>{{ user.about_me|safe }}</div>
                         </div>
 
-                        <div id="testmonial" style="padding-top: 70px; margin-top: -50px;">
+                        {% comment %} <div id="testmonial" style="padding-top: 70px; margin-top: -50px;">
                             <h2>親友見證</h2>
                             <div>{{user.testimonial|safe}}</div>
-                        </div>
+                        </div> {% endcomment %}
   
                         <div id="cases" style="padding-top: 70px; margin-top: -50px;">
                             <h2>精選案件</h2>

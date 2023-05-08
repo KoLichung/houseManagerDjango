@@ -96,27 +96,52 @@
                 </form>
                 
             </div>
-            {% if user.video_link and "https://www.youtube.com/embed/" in user.video_link%}
-                <div class="col-10 col-md-7 col-lg-8 my-5 ms-4">
-                    <div class="video-mask">
-                        <div class="ratio ratio-16x9">
-                            <iframe 
-                                src="{{ user.video_link }}" 
-                                allowfullscreen>
-                            </iframe>
+            
+            <section class="my-5 top-video" 
+                style="background-color: 
+                {% if user.video_bg_color == 'default' %}
+                    #615947
+                {% elif user.video_bg_color == 'red'  %}
+                    #850000
+                {% elif user.video_bg_color == 'brown'  %}
+                    #855600
+                {% elif user.video_bg_color == 'orange'  %}
+                    #FF7C69
+                {% elif user.video_bg_color == 'green'  %}
+                    #008585
+                {% elif user.video_bg_color == 'blue'  %}
+                    #5C75AD
+                {% elif user.video_bg_color == 'purple'  %}
+                    #7C6DAD
+                {% endif %}"
+            >
+
+
+                <div class="container text-center">
+                    <div class="row align-items-center">
+
+                    <div class="col-12 col-md-7 col-lg-8">
+                        <div class="video-mask">
+                            <div class="ratio ratio-16x9">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ user.video_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% else %}
-            {% endif %}
 
-            <div class="col-10 col-md-7 col-lg-8 my-5 ms-4">
-                <div class="video-mask">
-                    <div class="ratio ratio-16x9">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ user.video_id }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <div class="col-12 col-md-5 col-lg-4 align-items-center">
+                        <div class="text-white text-start my-3">
+                            {% if user.avatar %}
+                                <img class="avatar rounded-circle" src="{{ user.avatar.url }}">
+                            {% endif %}
+                            <span class="name">{{user.nickname}}</span> 
+                        </div>
+                        <div class="video-title h2 text-white mb-2 text-start">{{user.video_title}}</div>
+                        <div class="video-subtitle text-white text-start">{{user.video_subtitle}}</div>
+                    </div>
+
                     </div>
                 </div>
-            </div>
+            </section>
 
         </div>
     </div>
