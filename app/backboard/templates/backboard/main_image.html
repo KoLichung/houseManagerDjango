@@ -15,7 +15,8 @@
             <form method="post" id="image_post" enctype="multipart/form-data">{% csrf_token %}
               <div class="row my-2 gx-5" style="padding: 1rem 1rem;">
                 <div>
-                  <b>主要圖片</b> 
+                  <b>主要圖片</b><br> 
+                  建議圖片寬度 400px，圖片需小於 1mb
                   
                   {% comment %} <div>
                     <input type="hidden" id="post" name="post" value={{user.phone}}>

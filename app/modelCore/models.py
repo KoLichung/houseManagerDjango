@@ -72,6 +72,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     video_title = models.CharField(max_length=255, default='', blank=True, null=True)
     video_subtitle = models.CharField(max_length=255, default='', blank=True, null=True)
+    video_bg_color = models.CharField(max_length=10, default='', blank=True, null=True)
 
     #主圖
     main_image = models.ImageField(upload_to=image_upload_handler, blank=True, null=True)

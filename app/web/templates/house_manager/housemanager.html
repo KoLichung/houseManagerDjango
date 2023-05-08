@@ -34,7 +34,26 @@
 <body class="bg-dark">
 
     {% comment %} 置頂影片 {% endcomment %}
-    <section class="my-5 top-video">
+    <section class="my-5 top-video" 
+        style="background-color: 
+        {% if user.video_bg_color == 'default' %}
+            #615947
+        {% elif user.video_bg_color == 'red'  %}
+            #850000
+        {% elif user.video_bg_color == 'brown'  %}
+            #855600
+        {% elif user.video_bg_color == 'orange'  %}
+            #FF7C69
+        {% elif user.video_bg_color == 'green'  %}
+            #008585
+        {% elif user.video_bg_color == 'blue'  %}
+            #5C75AD
+        {% elif user.video_bg_color == 'purple'  %}
+            #7C6DAD
+        {% endif %}"
+    >
+
+
         <div class="container text-center">
             <div class="row align-items-center">
 

@@ -30,6 +30,7 @@
                   上傳頭像
                 </button><br><br>
                 
+                
                 {{ avatar_form.as_hidden }}
                 <div id="form2-container" type="hidden" style="display: none;">
                   {{avatar_form.avatar}}
@@ -38,6 +39,8 @@
             </div>
             
           </div>
+
+          建議使用正方形圖片(長寬皆為250px) ，圖片要小於 1mb
 
           <div class="row my-2 ms-1">
             <div class="col-6 p-1">
@@ -79,7 +82,8 @@
             </div>
   
             <div class="mb-3">
-              <label class="form-label">關於我</label>
+              <label class="form-label">關於我</label><br>
+              建議圖片寬度 800px，圖片要小於 1mb
               <div class="min-vh-50">
                   {{ form.about_me }} 
               </div>                  

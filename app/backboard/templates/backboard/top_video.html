@@ -15,7 +15,7 @@
                     <div class="mb-3">
                         <label class="form-label" for="video_link">影片連結</label>
                         {% if user.video_link %}
-                            <input class="form-control" id="video_link" name="video_link" value={{ user.video_link }} type="text" placeholder="Youtube 連結格式為 https://www.youtube.com/embed/xxxxx" />
+                            <input class="form-control" id="video_link" name="video_link" value={{ user.video_link }} type="text" placeholder="請放 Youtube 連結" />
                         {% else %}
                             <input class="form-control" id="video_link" name="video_link" value="" type="text" placeholder="請放 youtube 連結" />
                         {% endif %}
@@ -38,6 +38,57 @@
                             <input class="form-control" id="video_subtitle" name="video_subtitle" value="" type="text" placeholder="" />
                         {% endif %}
                     </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" for="video_subtitle">選擇底色</label>
+                        <br>
+                        
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" id="default" type="radio" name="bg_color" value="default" {%if user.video_bg_color == 'default' %}checked=""{% endif %}/>
+                            <label class="form-check-label" for="default">
+                                <div style="background-color: #615947">&emsp;&emsp;</div>
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" id="red" type="radio" name="bg_color" value="red" {%if user.video_bg_color == 'red' %}checked=""{% endif %}/>
+                            <label class="form-check-label" for="red"> 
+                                <div class="" style="background-color: #850000">&emsp;&emsp;</div>  
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" id="brown" type="radio" name="bg_color" value="brown" {%if user.video_bg_color == 'brown' %}checked=""{% endif %}/>
+                            <label class="form-check-label" for="brown">
+                                <div style="background-color: #855600">&emsp;&emsp;</div> 
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" id="orange" type="radio" name="bg_color" value="orange" {%if user.video_bg_color == 'orange' %}checked=""{% endif %}/>
+                            <label class="form-check-label" for="orange">
+                                <div style="background-color: #FF7C69">&emsp;&emsp;</div> 
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" id="green" type="radio" name="bg_color" value="green" {%if user.video_bg_color == 'green' %}checked=""{% endif %}/>
+                            <label class="form-check-label" for="green">
+                                <div style="background-color: #008585">&emsp;&emsp;</div> 
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" id="blue" type="radio" name="bg_color" value="blue" {%if user.video_bg_color == 'blue' %}checked=""{% endif %}/>
+                            <label class="form-check-label" for="blue">
+                                <div style="background-color: #5C75AD">&emsp;&emsp;</div> 
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" id="purple" type="radio" name="bg_color" value="purple" {%if user.video_bg_color == 'purple' %}checked=""{% endif %}/>
+                            <label class="form-check-label" for="purple">
+                                <div style="background-color: #7C6DAD">&emsp;&emsp;</div> 
+                            </label>
+                        </div>
+                    </div>
+                    
+
+
     
                     <div class="col-12 text-end">
                         <button class="blue-btn" type="submit" name="post" value='save' onclick="location.href='{% url 'top_video' %}'">儲存</button>

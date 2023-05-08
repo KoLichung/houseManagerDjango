@@ -25,6 +25,7 @@ def top_video(request):
     if request.method == 'POST':
 
         user.video_link = request.POST.get('video_link')
+        user.video_bg_color = request.POST.get('bg_color')
         
         if 'v=' in user.video_link:
             index = user.video_link.index('v=')
