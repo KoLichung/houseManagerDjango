@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.core.paginator import Paginator
 from django.http import HttpResponse
-from modelCore.models import User, FAQ, HouseCase
+from modelCore.models import User, FAQ, HouseCase, Order
 import urllib
 import datetime
 from modelCore.forms import AboutForm, TestimonialForm, UserMainImageForm, UserAvatarForm
@@ -197,7 +197,10 @@ def bills(request):
     if not request.user.is_authenticated:
         return redirect('/login')
     
-    return render(request,'backboard/bills.html')
+    user = request.user
+    orders = Order.objects.filter(user=user,state='PAID')
+    
+    return render(request,'backboard/bills.html', {'orders':orders})
 
 def plans(request):
     if not request.user.is_authenticated:

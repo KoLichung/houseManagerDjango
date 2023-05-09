@@ -26,7 +26,21 @@
                   <th>實際到期日</th>
                 </tr>
               </thead>
-  
+              
+              {% for order in orders %}
+                <tr>
+                  <td>${{order.price}}</td>
+                  <td>{{order.pay_date|date:'Y-m-d'}}</td>
+                  <td>{{order.time_period}}
+                    {% if order.plan == 'monthly' %}
+                      月
+                    {% else %}
+                      年
+                    {% endif %}
+                  </td>
+                  <td>{{order.expire_date|date:'Y-m-d'}}</td>
+                </tr>
+              {% endfor %}
               {% comment %} <tbody class="list">
                 <tr>
                   <td>$3,000</td>
