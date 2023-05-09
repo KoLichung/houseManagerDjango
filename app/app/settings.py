@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'web',
     'backboard',
     'ckeditor',
+    'ckeditor_uploader',
     'ecpayApp',
 ]
 
@@ -119,18 +120,18 @@ LOGGING = {
 }
 
 DATABASES = {
-    #  'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # },
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME','mydatabase'),
-        'USER': os.environ.get('DB_USER','mydatabaseuser'),
-        'PASSWORD': os.environ.get('DB_PASS','mypassword'),
-        'HOST': os.environ.get('DB_HOST','127.0.0.1'),
-        'PORT': '5432',
-    }
+     'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    },
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': os.environ.get('DB_NAME','mydatabase'),
+    #     'USER': os.environ.get('DB_USER','mydatabaseuser'),
+    #     'PASSWORD': os.environ.get('DB_PASS','mypassword'),
+    #     'HOST': os.environ.get('DB_HOST','127.0.0.1'),
+    #     'PORT': '5432',
+    # }
 }
 
 
@@ -156,7 +157,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh'
 
 TIME_ZONE = 'UTC'
 
@@ -165,7 +166,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -187,8 +187,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'modelCore.User'
 
-CKEDITOR_UPLOAD_PATH = "uploads/"
 
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_RESTRICT_BY_USER = True
 CKEDITOR_CONFIGS = {
     'default': {
     },
@@ -203,6 +204,5 @@ CKEDITOR_CONFIGS = {
         'removeDialogTabs': 'image:advanced',
     },
 }
-
 
 CELERY_BROKER_URL = 'amqp://guest:guest@localhost'

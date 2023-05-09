@@ -71,7 +71,12 @@ def about(request):
     if request.method == 'POST' and 'nickname' in request.POST:
         user.nickname = request.POST.get('nickname')
         user.phone_number = request.POST.get('phone_number')
-        user.line_id = request.POST.get('line_id')
+
+        if request.POST.get('line_id') != None:
+            user.line_id = request.POST.get('line_id')
+        else:
+            user.line_id = ''
+
         user.about_me = request.POST.get('about_me')
         user.save()  
         return redirect_params('about',{'user':user})
