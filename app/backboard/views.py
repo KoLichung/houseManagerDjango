@@ -27,10 +27,28 @@ def top_video(request):
         user.video_link = request.POST.get('video_link')
         user.video_bg_color = request.POST.get('bg_color')
         
-        if 'v=' in user.video_link:
-            index = user.video_link.index('v=')
-            video_id = user.video_link[index+2:]
-            user.video_id = video_id
+        # if 'v=' in user.video_link:
+        #     index = user.video_link.index('v=')
+        #     video_id = user.video_link[index+2:]
+        #     user.video_id = video_id
+        
+        # Examples:
+        # - http://youtu.be/SA2iWivDJiE
+        # - http://www.youtube.com/watch?v=_oPAwA_Udwc&feature=feedu
+        # - http://www.youtube.com/embed/SA2iWivDJiE
+        # - http://www.youtube.com/v/SA2iWivDJiE?version=3&amp;hl=en_US
+
+        query = urllib.parse.urlparse(user.video_link)
+        if query.hostname == 'youtu.be':
+            user.video_id =  query.path[1:]
+        if query.hostname in ('www.youtube.com', 'youtube.com'):
+            if query.path == '/watch':
+                p = urllib.parse.parse_qs(query.query)
+                user.video_id = p['v'][0]
+            if query.path[:7] == '/embed/':
+                user.video_id  = query.path.split('/')[2]
+            if query.path[:3] == '/v/':
+                user.video_id = query.path.split('/')[2]
 
         user.video_title = request.POST.get('video_title')
         user.video_subtitle = request.POST.get('video_subtitle')
