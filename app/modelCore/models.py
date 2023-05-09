@@ -146,10 +146,10 @@ class Order(models.Model):
     time_period = models.IntegerField(default=0)
 
     #繳款日
-    pay_date = models.DateField(null=True)
+    pay_date = models.DateTimeField(null=True)
     
     #實際到期日
-    expire_date = models.DateField(null=True)
+    expire_date = models.DateTimeField(null=True)
     
     #選擇方案 monthly, yearly
     plan = models.CharField(max_length=10, default='', blank = True, null=True)
