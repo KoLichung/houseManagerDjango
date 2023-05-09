@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User, HouseCase
+from .models import User, HouseCase, Order
 
 
 @admin.register(User)
@@ -10,3 +10,7 @@ class UserAdmin(admin.ModelAdmin):
 @admin.register(HouseCase)
 class HouseCaseAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'type')
+
+@admin.register(Order)
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('id', 'user', 'state', 'price', 'pay_date', 'expire_date')
