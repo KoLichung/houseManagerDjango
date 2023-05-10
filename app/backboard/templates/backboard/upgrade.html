@@ -16,8 +16,16 @@
                 <div class="row d-flex mx-0">
                     <div class="col-12 py-4 col-sm-3 plan-title text-white position-relative rounded-start">
                         <div class="position-absolute top-50 start-50 translate-middle section-title text-center">
-                            月繳方案<br>
-                            ＄<span style="font-size: 18pt">499</span> /月
+                            {% if plan == 'yearly' %}
+                                年繳方案<br>
+                                平均<br>
+                                ＄<span style="font-size: 18pt">375</span> /月
+                            {% else %}
+                                月繳方案<br>
+                                ＄<span style="font-size: 18pt">499</span> /月
+                            {% endif %}
+                            
+                            
                         </div>
                     </div>
                     <div class="col-12 py-4 col-sm-6 plan-content align-self-center">
@@ -36,7 +44,11 @@
                             </li>
                             <li class="">
                                 <span class="fas fa-check text-primary" data-fa-transform="shrink-2"></span>
-                                &emsp;一年總計 $ 5988
+                                {% if plan == 'yearly' %}
+                                    &emsp;<span style="color: red;">一年總計 $ 4500</span>
+                                {% else %}
+                                    &emsp;一年總計 $ 5988
+                                {% endif %}
                             </li>
                         </ul>
                     </div>
@@ -47,10 +59,10 @@
           </div>
           
           <div class="mt-3 d-flex flex-row-reverse">
-            <div class="form-check">
+            {% comment %} <div class="form-check">
                 <input class="form-check-input" id="flexCheckChecked" type="checkbox" value="" checked="" />
                 <label class="form-check-label" for="flexCheckChecked">自動續約</label>
-            </div>
+            </div> {% endcomment %}
             下次帳單日期為 2023-4-30 &emsp;
           </div>
 
@@ -61,7 +73,7 @@
                     <div class="col-3">
                         <input class="form-control" id="promo_code" name="promo_code" type="text"/>
                     </div>
-                    <div class="col-1 text-start">
+                    <div class="col-2 text-start">
                         <button class="green-btn btn-sm">套用</button>
                     </div>
                 </div>
@@ -69,7 +81,7 @@
             {% comment %} <div class="mt-1">折扣碼套用後優惠為 首月月繳 $399!</div> {% endcomment %}
 
             <div class="mt-4 text-end">
-                <btn class="orange-btn btn-sm " onclick="location.href='{% url 'payment' %}'">付款</btn>
+                <btn class="orange-btn btn-sm " onclick="location.href='{% url 'payment' %}?plan={{ plan }}'">付款</btn>
             </div>
             
           </div>

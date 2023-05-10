@@ -41,7 +41,7 @@
                         </ul>
                     </div>
                     <div class="col-12 my-4 text-center col-sm-3 plan-content align-self-center">
-                        <button class="border-btn" type="submit" name="plan" value='monthly' onclick="location.href='{% url 'upgrade' %}'">選擇</button>
+                        <button class="border-btn" type="submit" name="plan" value='monthly' onclick="location.href='{% url 'upgrade' %}?plan=monthly'">選擇</button>
                     </div>
                 </div>
             </div>
@@ -72,9 +72,9 @@
                                 <span class="fas fa-check text-primary" data-fa-transform="shrink-2"></span>
                                 &emsp;<span style="color: red;">一年總計 $ 4500</span></li>
                         </ul>
-                    </div>
+                    </div> 
                     <div class="col-12 my-4 text-center col-sm-3 plan-content align-self-center">
-                        <button class="border-btn" type="submit" name="plan" value='yearly' onclick="location.href='{% url 'upgrade' %}'">選擇</button>
+                        <button class="border-btn" type="submit" name="plan" value='yearly' onclick="location.href='{% url 'upgrade' %}?plan=yearly'">選擇</button>
                     </div>
                 </div>
             </div>

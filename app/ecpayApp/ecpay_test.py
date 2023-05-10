@@ -11,16 +11,25 @@ spec = importlib.util.spec_from_file_location(
 module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(module)
 
-def main():
+def main(user, plan, amount):
+    
+    if plan == 'yearly':
+        period ='年'
+        periodType = 'Y'
+        execTimes = '2' #總扣款次數
+    else:
+        period ='月'
+        periodType = 'M'
+        execTimes = '99'
 
     order_params = {
         'MerchantTradeNo': datetime.now().strftime("NO%Y%m%d%H%M%S"),
         'StoreID': '',
         'MerchantTradeDate': datetime.now().strftime("%Y/%m/%d %H:%M:%S"),
         'PaymentType': 'aio',
-        'TotalAmount': 2000, #商品金額
+        'TotalAmount': amount, #商品金額
         'TradeDesc': '訂閱房仲名片網服務', #交易描述
-        'ItemName': '房仲名片網，年訂閱', #商品名稱，用井字號當分行 
+        'ItemName': f'房仲名片網，{period}訂閱', #商品名稱，用井字號當分行
         
         # 付款完成通知回傳網址 待改
         'ReturnURL': 'https://housemanager.com.tw/payment/ecpay_callback', 
@@ -32,7 +41,7 @@ def main():
         'ClientBackURL': 'http://localhost:8000/backboard/bills',
         # 'ClientBackURL': 'https://housemanager.com.tw/backboard/bills',
         'ItemURL': 'https://www.ecpay.com.tw/item_url.php', # 商品資訊頁面
-        'Remark': '年訂閱',
+        'Remark': f'{period}訂閱',
         'ChooseSubPayment': '',
         
         # 結帳成功/失敗後的結果頁面，告知顧客本次的結帳結果
@@ -86,10 +95,10 @@ def main():
 
     # 定期定額相關參數
     period_params = {
-        'PeriodAmount': 2000, # 交易金額[TotalAmount]設定金額必須和授權金額[PeriodAmount]相同。
-        'PeriodType': 'M',
+        'PeriodAmount': amount, # 交易金額[TotalAmount]設定金額必須和授權金額[PeriodAmount]相同。
+        'PeriodType': periodType,
         'Frequency': '1',
-        'ExecTimes': '99',
+        'ExecTimes': execTimes,
         'PeriodReturnURL': 'https://housemanager.com.tw/payment/ecpay_callback' #每次執行完,會返回資料到這個網址,待改
     }
 

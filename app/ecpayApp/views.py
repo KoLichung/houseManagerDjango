@@ -13,7 +13,12 @@ logger = logging.getLogger(__file__)
 
 @csrf_exempt
 def ecpay_view(request):
-    return HttpResponse(main())
+    
+    user = request.GET.get('user')
+    plan = request.GET.get('plan')
+    amount = request.GET.get('amount')
+    
+    return HttpResponse(main(user=user, plan=plan, amount=amount))
 
 @csrf_exempt
 def ecpay_callback(request):

@@ -205,21 +205,32 @@ def bills(request):
 def plans(request):
     if not request.user.is_authenticated:
         return redirect('/login')
-    
+
     return render(request,'backboard/plans.html')
 
 def upgrade(request):
     if not request.user.is_authenticated:
         return redirect('/login')
     
-    return render(request,'backboard/upgrade.html')
+    plan = request.GET.get('plan')
+    
+    return render(request,'backboard/upgrade.html',{'plan':plan})
 
 def payment(request):
     if not request.user.is_authenticated:
         return redirect('/login')
     
+    user = request.user
+    plan = request.GET.get('plan')
+    if plan != None:
+        if plan == 'yearly':
+            amount = 4500
+        if plan == 'monthly':
+            amount = 499
+
     # return render(request,'backboard/payment.html')
-    return redirect_params('ecpayApp:ecpay',{'test':'test content'})
+    return redirect_params('ecpayApp:ecpay',{'user':user, 'plan':plan,'amount':amount})
+
 
 def setting(request):
     if not request.user.is_authenticated:
