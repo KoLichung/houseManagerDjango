@@ -1,7 +1,7 @@
 from django.shortcuts import redirect, render
 from django.core.paginator import Paginator
 from django.http import HttpResponse
-from modelCore.models import User, FAQ, HouseCase, Order
+from modelCore.models import User, FAQ, HouseCase, Order, Coupon
 import urllib
 import datetime
 from modelCore.forms import AboutForm, TestimonialForm, UserMainImageForm, UserAvatarForm
@@ -10,6 +10,8 @@ from django.contrib.auth import authenticate
 
 from ecpayApp.ecpay_test import main
 from django.views.decorators.csrf import csrf_exempt
+
+from django.utils import timezone
 
 # Create your views here.
 
@@ -213,8 +215,42 @@ def upgrade(request):
         return redirect('/login')
     
     plan = request.GET.get('plan')
+    if plan != None:
+        if plan == 'yearly':
+            amount = 4500
+        if plan == 'monthly':
+            amount = 499
+    else:
+        return redirect('plans')
+
+    message = ''
+
+    if request.GET.get('coupon') != None:
+        coupon_code = request.GET.get('coupon')
+        if Coupon.objects.filter(code=coupon_code).count()!=0:
+            coupon = Coupon.objects.filter(code=coupon_code).first()
+
+            year = coupon.expire_date.year
+            month = coupon.expire_date.month
+            day = coupon.expire_date.day
+            hour = coupon.expire_date.hour
+            minute = coupon.expire_date.minute
+            second = coupon.expire_date.second
+            new_expire_date = datetime.datetime(year, month, day, hour, minute, second)
+
+            if new_expire_date > datetime.datetime.now():
+                coupon_percent = coupon.count_percent
+                amount = int(amount*coupon_percent/100)
+                if plan == 'yearly':
+                    message=f'您使用了折價券！折價後金額為 <span style="color: red;">${amount}</span> / 年!'
+                else:
+                    message=f'您使用了折價券！折價後金額為 {amount} / 月!'
+            else:
+                message=f'折價券過期了!'
+        else:
+            message='找不到此 Coupon 折價券~'
     
-    return render(request,'backboard/upgrade.html',{'plan':plan})
+    return render(request,'backboard/upgrade.html',{'plan':plan,'message':message,'amount':amount})
 
 def payment(request):
     if not request.user.is_authenticated:
@@ -222,11 +258,10 @@ def payment(request):
     
     user = request.user
     plan = request.GET.get('plan')
-    if plan != None:
-        if plan == 'yearly':
-            amount = 4500
-        if plan == 'monthly':
-            amount = 499
+    amount = request.GET.get('amount')
+
+    if plan == None or amount == None:
+        return redirect('plans')
 
     # return render(request,'backboard/payment.html')
     return redirect_params('ecpayApp:ecpay',{'user':user, 'plan':plan,'amount':amount})

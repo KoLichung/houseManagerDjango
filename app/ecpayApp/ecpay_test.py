@@ -16,7 +16,7 @@ def main(user, plan, amount):
     if plan == 'yearly':
         period ='年'
         periodType = 'Y'
-        execTimes = '2' #總扣款次數
+        execTimes = '9' #總扣款次數
     else:
         period ='月'
         periodType = 'M'
@@ -38,7 +38,7 @@ def main(user, plan, amount):
 
         # 結帳後，先導到 OrderResultURL，從綠界頁面跳回的頁面
         # 如果沒有參數才會跳轉到 ClientBackURL
-        'ClientBackURL': 'http://localhost:8000/backboard/bills',
+        'ClientBackURL': 'https://housemanager.com.tw/backboard/bills',
         # 'ClientBackURL': 'https://housemanager.com.tw/backboard/bills',
         'ItemURL': 'https://www.ecpay.com.tw/item_url.php', # 商品資訊頁面
         'Remark': f'{period}訂閱',
@@ -51,7 +51,7 @@ def main(user, plan, amount):
         'IgnorePayment': '',
         'PlatformID': '',
         'InvoiceMark': 'N',
-        'CustomField1': '4', #可以用來放 user_id
+        'CustomField1': f'{user.id}', #可以用來放 user_id
         'CustomField2': '',
         'CustomField3': '',
         'CustomField4': '',

@@ -18,11 +18,8 @@
                         <div class="position-absolute top-50 start-50 translate-middle section-title text-center">
                             {% if plan == 'yearly' %}
                                 年繳方案<br>
-                                平均<br>
-                                ＄<span style="font-size: 18pt">375</span> /月
                             {% else %}
                                 月繳方案<br>
-                                ＄<span style="font-size: 18pt">499</span> /月
                             {% endif %}
                             
                             
@@ -45,9 +42,9 @@
                             <li class="">
                                 <span class="fas fa-check text-primary" data-fa-transform="shrink-2"></span>
                                 {% if plan == 'yearly' %}
-                                    &emsp;<span style="color: red;">一年總計 $ 4500</span>
+                                    &emsp;<span style="color: red;">$4500/年</span>，平均 ＄375 /月
                                 {% else %}
-                                    &emsp;一年總計 $ 5988
+                                    &emsp;$499/月，一年總計 $ 5988
                                 {% endif %}
                             </li>
                         </ul>
@@ -58,13 +55,14 @@
             </div>
           </div>
           
-          <div class="mt-3 d-flex flex-row-reverse">
-            {% comment %} <div class="form-check">
+          <br>
+          {% comment %} <div class="mt-3 d-flex flex-row-reverse">
+            <div class="form-check">
                 <input class="form-check-input" id="flexCheckChecked" type="checkbox" value="" checked="" />
                 <label class="form-check-label" for="flexCheckChecked">自動續約</label>
-            </div> {% endcomment %}
+            </div> 
             下次帳單日期為 2023-4-30 &emsp;
-          </div>
+          </div> {% endcomment %}
 
           <div class="mb-3">
             <label class="form-label" for="promo_code">輸入折扣碼</label>
@@ -74,24 +72,34 @@
                         <input class="form-control" id="promo_code" name="promo_code" type="text"/>
                     </div>
                     <div class="col-2 text-start">
-                        <button class="green-btn btn-sm">套用</button>
+                        <button class="green-btn btn-sm" onclick="apply()">套用</button>
                     </div>
                 </div>
             </div>
-            {% comment %} <div class="mt-1">折扣碼套用後優惠為 首月月繳 $399!</div> {% endcomment %}
+
+            <br>
+            <div class="mt-1"><h5>{{message|safe }}</h5></div>
 
             <div class="mt-4 text-end">
-                <btn class="orange-btn btn-sm " onclick="location.href='{% url 'payment' %}?plan={{ plan }}'">付款</btn>
+                <btn class="orange-btn btn-sm " onclick="location.href='{% url 'payment' %}?plan={{ plan }}&amount={{amount}}'">付款</btn>
             </div>
             
           </div>
-
-          
           
         </div>
       </div>
 
     </div>  
 </div>
+
+<script>
+    function apply() {
+      // 执行操作
+      var inputValue = document.getElementById('promo_code').value;
+      console.log('套用按钮被点击了');
+      console.log(inputValue);
+      window.location.href = "{% url 'upgrade' %}" + "?plan={{plan}}" + "&coupon=" + inputValue;
+    }
+</script>
 
 {% endblock %}

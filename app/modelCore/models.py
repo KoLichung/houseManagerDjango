@@ -184,6 +184,10 @@ class Order(models.Model):
     TradeNo = models.CharField(max_length=50, default='', blank = True, null=True) #可能會有多次回傳,但這個欄位應該是唯一的
     CheckMacValue = models.CharField(max_length=125, default='', blank = True, null=True)
 
+class Coupon(models.Model):
+    code = models.CharField(max_length=25, default='', blank = True, null=True)
+    count_percent = models.IntegerField(default=0)
+    expire_date = models.DateTimeField(null=True)
 
 # class Payment(models.Model):
 
