@@ -51,7 +51,7 @@ def main(user, plan, amount):
         'IgnorePayment': '',
         'PlatformID': '',
         'InvoiceMark': 'N',
-        'CustomField1': f'{user.id}', #可以用來放 user_id
+        'CustomField1': {{user}}, #可以用來放 user_id
         'CustomField2': '',
         'CustomField3': '',
         'CustomField4': '',

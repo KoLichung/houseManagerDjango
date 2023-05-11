@@ -256,7 +256,7 @@ def payment(request):
     if not request.user.is_authenticated:
         return redirect('/login')
     
-    user = request.user
+    user = request.user.id
     plan = request.GET.get('plan')
     amount = request.GET.get('amount')
 
