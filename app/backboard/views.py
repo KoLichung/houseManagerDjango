@@ -200,7 +200,20 @@ def bills(request):
         return redirect('/login')
     
     user = request.user
-    orders = Order.objects.filter(user=user,state='PAID')
+    
+    orders = Order.objects.filter(user=user,state='PAID').order_by('-id')
+
+    if orders.count() != 0:
+        last_order = orders.first()
+        year = last_order.expire_date.year
+        month = last_order.expire_date.month
+        day = last_order.expire_date.day
+        hour = last_order.expire_date.hour
+        minute = last_order.expire_date.minute
+        second = last_order.expire_date.second
+        new_expire_date = datetime.datetime(year, month, day, hour, minute, second)
+        if new_expire_date > datetime.datetime.now():
+            return render(request,'backboard/bills.html', {'orders':orders,'is_subscribing':True})
     
     return render(request,'backboard/bills.html', {'orders':orders})
 

@@ -6,9 +6,41 @@
 
       <div class="card h-lg-100 mb-4">
         <div class="card-header">
-          <div class="d-flex justify-content-between">
-            <div><span style='color:red;'>(功能修正中，請勿付款)</span><span class="section-title">目前方案：免費</span> (升級後即可公開分享您的數位名片)</div>
-            <a class="orange-btn btn-sm " href="{% url 'plans' %}">升級方案</a>
+          {% if is_subscribing %}
+            <div class="d-flex justify-content-between">
+              <div>
+                <span class="section-title">目前方案：訂閱中</span>
+              </div>
+              <button class="red-btn btn-sm" type="button"  data-bs-toggle="modal" data-bs-target="#unsubscribe">
+                取消訂閱
+              </button>
+            </div>
+          {% else %}
+            <div class="d-flex justify-content-between">
+              <div>
+                <span style='color:red;'>(功能修正中，請勿付款)</span>
+                <span class="section-title">目前方案：無</span> (升級後即可公開分享您的數位名片)
+              </div>
+              <a class="orange-btn btn-sm" href="{% url 'plans' %}">升級方案</a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- 確認取消訂閱Modal -->
+      <div class="modal fade" id="unsubscribe" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="unsubscribeModalLabel">取消訂閱確認</h5>
+            </div>
+            <div class="modal-body">
+              <p>你確定要取消訂閱嗎？</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+              <button type="button" class="btn btn-primary" id="confirmUnsubscribeBtn">確定取消訂閱</button>
+            </div>
           </div>
         </div>
       </div>
