@@ -49,9 +49,18 @@
     </noscript>
     <!-- End Meta Pixel Code -->
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{user.google_id}}"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', '{{user.google_id}}');
+    </script>
+
 </head>
 <body class="bg-dark">
-
     {% comment %} 置頂影片 {% endcomment %}
     <section class="my-5 top-video" 
         style="background-color: 
@@ -224,9 +233,47 @@
                         <div class="d-grid gap-2 mt-3">
                             <button class="btn yellow-button" type="button" onclick="callUser()">立即電話諮詢</button>
                         </div>
+                        
                         <div class="d-grid gap-2 mt-3">
                             <a class="btn line-button" type="button" target="_blank" href="https://line.me/R/ti/p/{{user.line_id}}">立即LINE諮詢</a>
                         </div>
+
+                        <!-- Event snippet for 點擊打電話按鈕 conversion page
+                        In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+                        <script>
+                            function gtag_report_conversion(url) {
+                            var callback = function () {
+                                if (typeof(url) != 'undefined') {
+                                window.location = url;
+                                }
+                            };
+                            gtag('event', 'conversion', {
+                                'send_to': '{{user.google_id}}/Tqr3CKqAhJ8YELfYhtEp', //但這邊需要個別事件的碼?
+                                'event_callback': callback
+                            });
+                            return false;
+                            }
+                        </script>
+                        <!-- Event snippet for 點擊加入LINE諮詢 conversion page
+                        In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+                        <script>
+
+                            let lineUrl = 'https://line.me/R/ti/p/{{user.line_id}}';
+                            function gtag_report_conversion(lineUrl) {
+                            var callback = function () {
+                                if (typeof(lineUrl) != 'undefined') {
+                                window.location = lineUrl;
+                                }
+                            };
+                            gtag('event', 'conversion', {
+                                'send_to': '{{user.google_id}}/IhiWCK2AhJ8YELfYhtEp',
+                                'event_callback': callback
+                            });
+                            return false;
+                            }
+                        </script>
+    
+    
                     </div>
 
                 </div>
@@ -255,6 +302,9 @@
         };
 
     </script>
+
+    
+  
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
