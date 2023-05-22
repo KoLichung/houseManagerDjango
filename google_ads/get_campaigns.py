@@ -50,7 +50,7 @@ if __name__ == "__main__":
     # home directory if none is specified.
     # googleads_client = GoogleAdsClient.load_from_storage(version="v13")
     # 如要指定 google-ads.yaml 檔案的所在位置，您可以在呼叫檔案時將路徑當做字串傳遞給方法：
-    googleads_client = GoogleAdsClient.load_from_storage("/Users/JuneWen/ChiJia/django/houseManagerDjango/google-ads.yaml")
+    googleads_client = GoogleAdsClient.load_from_storage("/Users/JuneWen/ChiJia/django/houseManagerDjango/google_ads/google-ads.yaml")
     
 
     parser = argparse.ArgumentParser(

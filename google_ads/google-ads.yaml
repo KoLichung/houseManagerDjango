@@ -15,7 +15,7 @@ developer_token: YuMPcTzFtnfKWLJlarizBw
 # Messages guide:                                                                        #
 # https://developers.google.com/google-ads/api/docs/client-libs/python/protobuf-messages #
 ##########################################################################################
-use_proto_plus: False
+use_proto_plus: True
 
 # OAuth2 configuration
 ##########################################################################################
