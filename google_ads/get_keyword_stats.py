@@ -12,64 +12,76 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""This example illustrates how to get all campaigns.
+"""This example illustrates how to get campaign criteria.
 
-To add campaigns, run add_campaigns.py.
+Retrieves negative keywords in a campaign.
 """
-
 
 import argparse
 import sys
-import os
 
 from google.ads.googleads.client import GoogleAdsClient
 from google.ads.googleads.errors import GoogleAdsException
 
-def main(client, customer_id):
-    # client 是一個 global client
-    # customer_id 是
-    print(f'the client {client}')
-    print(f'the customer id {customer_id}')
 
+# [START get_keyword_stats]
+def main(client, customer_id):
     ga_service = client.get_service("GoogleAdsService")
 
     query = """
         SELECT
           campaign.id,
-          campaign.name
-        FROM campaign
-        ORDER BY campaign.id"""
+          campaign.name,
+          ad_group.id,
+          ad_group.name,
+          ad_group_criterion.criterion_id,
+          ad_group_criterion.keyword.text,
+          ad_group_criterion.keyword.match_type,
+          metrics.impressions,
+          metrics.clicks,
+          metrics.cost_micros
+        FROM keyword_view WHERE segments.date DURING LAST_7_DAYS
+        AND campaign.advertising_channel_type = 'SEARCH'
+        AND ad_group.status = 'ENABLED'
+        AND ad_group_criterion.status IN ('ENABLED', 'PAUSED')
+        ORDER BY metrics.impressions DESC
+        LIMIT 50"""
 
     # Issues a search request using streaming.
-    stream = ga_service.search_stream(customer_id=customer_id, query=query)
-
+    search_request = client.get_type("SearchGoogleAdsStreamRequest")
+    search_request.customer_id = customer_id
+    search_request.query = query
+    stream = ga_service.search_stream(search_request)
     for batch in stream:
         for row in batch.results:
+            campaign = row.campaign
+            ad_group = row.ad_group
+            criterion = row.ad_group_criterion
+            metrics = row.metrics
             print(
-                f"Campaign with ID {row.campaign.id} and name "
-                f'"{row.campaign.name}" was found.'
+                f'Keyword text "{criterion.keyword.text}" with '
+                f'match type "{criterion.keyword.match_type.name}" '
+                f"and ID {criterion.criterion_id} in "
+                f'ad group "{ad_group.name}" '
+                f'with ID "{ad_group.id}" '
+                f'in campaign "{campaign.name}" '
+                f"with ID {campaign.id} "
+                f"had {metrics.impressions} impression(s), "
+                f"{metrics.clicks} click(s), and "
+                f"{metrics.cost_micros} cost (in micros) during "
+                "the last 7 days."
             )
+    # [END get_keyword_stats]
 
 
 if __name__ == "__main__":
     # GoogleAdsClient will read the google-ads.yaml configuration file in the
     # home directory if none is specified.
     # googleads_client = GoogleAdsClient.load_from_storage(version="v13")
-    # 如要指定 google-ads.yaml 檔案的所在位置，您可以在呼叫檔案時將路徑當做字串傳遞給方法：
-<<<<<<<< HEAD:app/googleAdsApp/get_campaigns.py
-    PWD = os.path.dirname(os.path.realpath(__file__ )) 
-    thePath = os.path.join(PWD, "google-ads.yaml")
-
-    # googleads_client = GoogleAdsClient.load_from_storage("/Users/JuneWen/ChiJia/django/houseManagerDjango/google-ads.yaml")
-
-    googleads_client = GoogleAdsClient.load_from_storage(thePath)
-========
     googleads_client = GoogleAdsClient.load_from_storage("/Users/JuneWen/ChiJia/django/houseManagerDjango/google_ads/google-ads.yaml")
->>>>>>>> 46c5c62c05395b5848bdbf818abc01849bbbcf9b:google_ads/get_campaigns.py
-    
 
     parser = argparse.ArgumentParser(
-        description="Lists all campaigns for specified customer."
+        description=("Retrieves a campaign's negative keywords.")
     )
     # The following argument(s) should be provided to run the example.
     parser.add_argument(

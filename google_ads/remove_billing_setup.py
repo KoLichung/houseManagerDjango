@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Copyright 2020 Google LLC
+# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,64 +12,51 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""This example illustrates how to get all campaigns.
+"""This example removes a billing setup with the specified ID.
 
-To add campaigns, run add_campaigns.py.
+To get available billing setups, run get_billing_setups.py.
 """
 
 
 import argparse
 import sys
-import os
 
 from google.ads.googleads.client import GoogleAdsClient
 from google.ads.googleads.errors import GoogleAdsException
 
-def main(client, customer_id):
-    # client 是一個 global client
-    # customer_id 是
-    print(f'the client {client}')
-    print(f'the customer id {customer_id}')
 
-    ga_service = client.get_service("GoogleAdsService")
+# [START remove_billing_setup]
+def main(client, customer_id, billing_setup_id):
+    billing_setup_service = client.get_service("BillingSetupService")
 
-    query = """
-        SELECT
-          campaign.id,
-          campaign.name
-        FROM campaign
-        ORDER BY campaign.id"""
+    # Create billing setup operation.
+    billing_setup_operation = client.get_type("BillingSetupOperation")
+    billing_setup_operation.remove = billing_setup_service.billing_setup_path(
+        customer_id, billing_setup_id
+    )
 
-    # Issues a search request using streaming.
-    stream = ga_service.search_stream(customer_id=customer_id, query=query)
-
-    for batch in stream:
-        for row in batch.results:
-            print(
-                f"Campaign with ID {row.campaign.id} and name "
-                f'"{row.campaign.name}" was found.'
-            )
+    # Remove the billing setup.
+    billing_setup_response = billing_setup_service.mutate_billing_setup(
+        customer_id=customer_id, operation=billing_setup_operation
+    )
+    print(
+        "Removed billing setup "
+        f'"{billing_setup_response.results[0].resource_name}"'
+    )
+    # [END remove_billing_setup]
 
 
 if __name__ == "__main__":
     # GoogleAdsClient will read the google-ads.yaml configuration file in the
     # home directory if none is specified.
     # googleads_client = GoogleAdsClient.load_from_storage(version="v13")
-    # 如要指定 google-ads.yaml 檔案的所在位置，您可以在呼叫檔案時將路徑當做字串傳遞給方法：
-<<<<<<<< HEAD:app/googleAdsApp/get_campaigns.py
-    PWD = os.path.dirname(os.path.realpath(__file__ )) 
-    thePath = os.path.join(PWD, "google-ads.yaml")
-
-    # googleads_client = GoogleAdsClient.load_from_storage("/Users/JuneWen/ChiJia/django/houseManagerDjango/google-ads.yaml")
-
-    googleads_client = GoogleAdsClient.load_from_storage(thePath)
-========
     googleads_client = GoogleAdsClient.load_from_storage("/Users/JuneWen/ChiJia/django/houseManagerDjango/google_ads/google-ads.yaml")
->>>>>>>> 46c5c62c05395b5848bdbf818abc01849bbbcf9b:google_ads/get_campaigns.py
-    
 
     parser = argparse.ArgumentParser(
-        description="Lists all campaigns for specified customer."
+        description=(
+            "Removes billing setup for specified customer and billing "
+            "setup ID."
+        )
     )
     # The following argument(s) should be provided to run the example.
     parser.add_argument(
@@ -79,10 +66,17 @@ if __name__ == "__main__":
         required=True,
         help="The Google Ads customer ID.",
     )
+    parser.add_argument(
+        "-b",
+        "--billing_setup_id",
+        type=str,
+        required=True,
+        help="The billing setup ID.",
+    )
     args = parser.parse_args()
 
     try:
-        main(googleads_client, args.customer_id)
+        main(googleads_client, args.customer_id, args.billing_setup_id)
     except GoogleAdsException as ex:
         print(
             f'Request with ID "{ex.request_id}" failed with status '

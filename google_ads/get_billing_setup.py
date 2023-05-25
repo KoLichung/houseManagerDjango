@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# Copyright 2020 Google LLC
+# Copyright 2018 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,64 +12,69 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"""This example illustrates how to get all campaigns.
-
-To add campaigns, run add_campaigns.py.
-"""
+"""Gets all billing setup objects available for the specified customer ID."""
 
 
 import argparse
 import sys
-import os
 
 from google.ads.googleads.client import GoogleAdsClient
 from google.ads.googleads.errors import GoogleAdsException
 
-def main(client, customer_id):
-    # client 是一個 global client
-    # customer_id 是
-    print(f'the client {client}')
-    print(f'the customer id {customer_id}')
 
+# [START get_billing_setup]
+def main(client, customer_id):
     ga_service = client.get_service("GoogleAdsService")
 
     query = """
         SELECT
-          campaign.id,
-          campaign.name
-        FROM campaign
-        ORDER BY campaign.id"""
+          billing_setup.id,
+          billing_setup.status,
+          billing_setup.payments_account,
+          billing_setup.payments_account_info.payments_account_id,
+          billing_setup.payments_account_info.payments_account_name,
+          billing_setup.payments_account_info.payments_profile_id,
+          billing_setup.payments_account_info.payments_profile_name,
+          billing_setup.payments_account_info.secondary_payments_profile_id
+        FROM billing_setup"""
 
-    # Issues a search request using streaming.
     stream = ga_service.search_stream(customer_id=customer_id, query=query)
 
+    print("Found the following billing setup results:")
     for batch in stream:
         for row in batch.results:
+            billing_setup = row.billing_setup
+            pai = billing_setup.payments_account_info
+
+            if pai.secondary_payments_profile_id:
+                secondary_payments_profile_id = (
+                    pai.secondary_payments_profile_id
+                )
+            else:
+                secondary_payments_profile_id = "None"
+
             print(
-                f"Campaign with ID {row.campaign.id} and name "
-                f'"{row.campaign.name}" was found.'
+                f"Billing setup with ID {billing_setup.id}, "
+                f'status "{billing_setup.status.name}", '
+                f'payments_account "{billing_setup.payments_account}" '
+                f"payments_account_id {pai.payments_account_id}, "
+                f'payments_account_name "{pai.payments_account_name}", '
+                f"payments_profile_id {pai.payments_profile_id}, "
+                f'payments_profile_name "{pai.payments_profile_name}", '
+                "secondary_payments_profile_id "
+                f"{secondary_payments_profile_id}."
             )
+    # [END get_billing_setup]
 
 
 if __name__ == "__main__":
     # GoogleAdsClient will read the google-ads.yaml configuration file in the
     # home directory if none is specified.
     # googleads_client = GoogleAdsClient.load_from_storage(version="v13")
-    # 如要指定 google-ads.yaml 檔案的所在位置，您可以在呼叫檔案時將路徑當做字串傳遞給方法：
-<<<<<<<< HEAD:app/googleAdsApp/get_campaigns.py
-    PWD = os.path.dirname(os.path.realpath(__file__ )) 
-    thePath = os.path.join(PWD, "google-ads.yaml")
-
-    # googleads_client = GoogleAdsClient.load_from_storage("/Users/JuneWen/ChiJia/django/houseManagerDjango/google-ads.yaml")
-
-    googleads_client = GoogleAdsClient.load_from_storage(thePath)
-========
     googleads_client = GoogleAdsClient.load_from_storage("/Users/JuneWen/ChiJia/django/houseManagerDjango/google_ads/google-ads.yaml")
->>>>>>>> 46c5c62c05395b5848bdbf818abc01849bbbcf9b:google_ads/get_campaigns.py
-    
 
     parser = argparse.ArgumentParser(
-        description="Lists all campaigns for specified customer."
+        description="Lists all billing setup objects for specified customer."
     )
     # The following argument(s) should be provided to run the example.
     parser.add_argument(
