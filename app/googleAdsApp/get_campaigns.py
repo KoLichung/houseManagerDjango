@@ -20,11 +20,17 @@ To add campaigns, run add_campaigns.py.
 
 import argparse
 import sys
+import os
 
 from google.ads.googleads.client import GoogleAdsClient
 from google.ads.googleads.errors import GoogleAdsException
 
 def main(client, customer_id):
+    # client 是一個 global client
+    # customer_id 是
+    print(f'the client {client}')
+    print(f'the customer id {customer_id}')
+
     ga_service = client.get_service("GoogleAdsService")
 
     query = """
@@ -50,7 +56,12 @@ if __name__ == "__main__":
     # home directory if none is specified.
     # googleads_client = GoogleAdsClient.load_from_storage(version="v13")
     # 如要指定 google-ads.yaml 檔案的所在位置，您可以在呼叫檔案時將路徑當做字串傳遞給方法：
-    googleads_client = GoogleAdsClient.load_from_storage("/Users/JuneWen/ChiJia/django/houseManagerDjango/google-ads.yaml")
+    PWD = os.path.dirname(os.path.realpath(__file__ )) 
+    thePath = os.path.join(PWD, "google-ads.yaml")
+
+    # googleads_client = GoogleAdsClient.load_from_storage("/Users/JuneWen/ChiJia/django/houseManagerDjango/google-ads.yaml")
+
+    googleads_client = GoogleAdsClient.load_from_storage(thePath)
     
 
     parser = argparse.ArgumentParser(
