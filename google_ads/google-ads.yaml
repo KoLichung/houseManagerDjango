@@ -49,9 +49,9 @@ refresh_token: 1//0ewknHurL8jnPCgYIARAAGA4SNwF-L9Ir_WVFgodsv77T_tY7ulJ0CZX8RXgpe
 # OAuth pairs.                                                                           #
 ##########################################################################################
 # 廣告管理帳戶
-login_customer_id: 6052909072
+# login_customer_id: 6052909072
 # 測試帳戶
-# login_customer_id: 3514156209
+login_customer_id: 3514156209
 
 
 # Logging configuration
