@@ -80,7 +80,6 @@
             #7C6DAD
         {% endif %}"
     >
-
         <div class="container text-center">
             <div class="row align-items-center">
 
@@ -108,7 +107,7 @@
     </section>
 
     {% comment %} navbar {% endcomment %}
-    <header class="sticky-top">        
+    <header id="header" class="sticky-top">        
         <nav class="navbar navbar-expand bg-dark ">
             <div class="container-fluid">
                 <div class="mx-auto">
@@ -142,11 +141,52 @@
                 </div>
             </div>
             
-            
         </nav>
         <hr>
     </header>
+
+    {% comment %} side-button {% endcomment %}
+    <div class="side-button text-white" style="display:none">
+        <div>
+            <a class="side-action-btn" style="background-color:rgb(88,192,56)" type="button" target="_blank" href="https://line.me/R/ti/p/{{user.line_id}}">
+                <img src="{% static 'house_manager/images/icon-line.png' %}">
+            </a>
+        </div>
+        <div>
+            <button class="side-action-btn btn" style="background-color:#f7ae11" type="button" onclick="callUser()" >
+                <img src="{% static 'house_manager/images/icon-phone.png'%}" style=" padding:4px">
+            </button>
+        </div>
+        <div id="backToTop" >
+            <button  class="side-action-btn btn" style="background-color:grey" type="button"  onclick="backToTop()" >
+                <img src="{% static 'house_manager/images/icon-up.png'%}" style=" padding:4px">
+            </button>
+        </div>
+    </div>
     
+    <script>
+        const sideButtons = document.querySelector('.side-button');
+        const header = document.querySelector('#header');
+        
+        window.addEventListener("scroll",function(){
+            console.log(header.getBoundingClientRect().top);
+            
+            header.getBoundingClientRect().top === 0 || header.getBoundingClientRect().top < 350
+            ? sideButtons.setAttribute('style','display:block') 
+            : sideButtons.setAttribute('style','display:none')
+        });
+
+        function backToTop(){
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth' 
+            });
+          }
+        
+    </script>
+
+    
+    {% comment %} 主要內容 {% endcomment %}
     <article>
         <div class="container mt-4">
             <div class="row ps-md-5 pe-md-5">

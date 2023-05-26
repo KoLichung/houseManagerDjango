@@ -21,6 +21,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        img {
+          width: 100%;
+        }
+    </style>
 </head>
 <body class="bg-dark">
 
@@ -54,7 +60,7 @@
     </section>
 
     {% comment %} navbar {% endcomment %}
-    <header class="sticky-top">        
+    <header id="header" class="sticky-top">        
         <nav class="navbar navbar-expand bg-dark ">
             <div class="container-fluid">
                 <div class="mx-auto">
@@ -100,6 +106,45 @@
         </nav>
         <hr>
     </header>
+
+    {% comment %} side-button {% endcomment %}
+    <div class="side-button text-white" style="display:none">
+        <div>
+            <a class="side-action-btn" style="background-color:rgb(88,192,56)" type="button" target="_blank" href="https://line.me/R/ti/p/{{user.line_id}}">
+                <img src="{% static 'house_manager/images/icon-line.png' %}">
+            </a>
+        </div>
+        <div>
+            <button class="side-action-btn btn" style="background-color:#f7ae11" type="button" onclick="callUser()" >
+                <img src="{% static 'house_manager/images/icon-phone.png'%}" style=" padding:4px">
+            </button>
+        </div>
+        <div id="backToTop" >
+            <button  class="side-action-btn btn" style="background-color:grey" type="button"  onclick="backToTop()" >
+                <img src="{% static 'house_manager/images/icon-up.png'%}" style=" padding:4px">
+            </button>
+        </div>
+    </div>
+    
+    <script>
+        const sideButtons = document.querySelector('.side-button');
+        const header = document.querySelector('#header');
+        
+        window.addEventListener("scroll",function(){
+            //console.log(header.getBoundingClientRect().top);
+            header.getBoundingClientRect().top === 0 || header.getBoundingClientRect().top < 350
+            ? sideButtons.setAttribute('style','display:block') 
+            : sideButtons.setAttribute('style','display:none')
+        });
+
+        function backToTop(){
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth' 
+            });
+          }
+        
+    </script>
     
     <article>
         <div class="container mt-4">
@@ -354,6 +399,25 @@
     <footer class="footer bg-dark">
         房仲名片網 All Rights Reserved.
     </footer>
+
+    <script>
+        const list = document.querySelectorAll(".list");
+
+        function activeLink() {
+            list.forEach((item) => item.classList.remove("active"));
+            this.classList.add("active");
+        }
+        list.forEach((item) => item.addEventListener("click", activeLink));
+        
+        function callUser(){
+            console.log("button_call");
+            //彈出視窗
+            var phone = "0"+{{ user.phone }}
+            window.open('tel:'+phone); 
+        };
+
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>
