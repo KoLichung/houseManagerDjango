@@ -192,6 +192,8 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_RESTRICT_BY_USER = True
 CKEDITOR_CONFIGS = {
     'default': {
+        'iframe':True,
+        'iframedialog':True,
     },
     'about_me': {
         'width':'auto',
