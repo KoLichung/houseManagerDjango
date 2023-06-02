@@ -198,8 +198,7 @@ CKEDITOR_CONFIGS = {
         'width':'auto',
         'image_prefillDimensions': False,
         'removeDialogTabs': 'image:advanced',
-        'iframe':True,
-        'iframedialog':True,
+        'extraAllowedContent': 'iframe[*]',
     },
     'testimonial':{
         'width':'auto',
