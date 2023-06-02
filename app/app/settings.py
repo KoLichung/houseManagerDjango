@@ -192,8 +192,7 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_RESTRICT_BY_USER = True
 CKEDITOR_CONFIGS = {
     'default': {
-        'iframe':True,
-        'iframedialog':True,
+        'extraAllowedContent': 'iframe[*]',
     },
     'about_me': {
         'width':'auto',
@@ -208,6 +207,5 @@ CKEDITOR_CONFIGS = {
         'removeDialogTabs': 'image:advanced',
     },
 }
-CKEDITOR_CONFIGS.extraAllowedContent = 'iframe[*]'
 
 CELERY_BROKER_URL = 'amqp://guest:guest@localhost'
