@@ -208,5 +208,6 @@ CKEDITOR_CONFIGS = {
         'removeDialogTabs': 'image:advanced',
     },
 }
+CKEDITOR_CONFIGS.extraAllowedContent = 'iframe[*]'
 
 CELERY_BROKER_URL = 'amqp://guest:guest@localhost'
