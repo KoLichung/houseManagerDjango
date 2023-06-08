@@ -1,8 +1,7 @@
 from celery import shared_task
 import requests
 from bs4 import BeautifulSoup
-import time
-import random
+from datetime import date
 import csv
 import os
 from django.db.models import Q
@@ -72,7 +71,7 @@ def crawl_manager_cases_by_requests(user, url):
         cases_soup = BeautifulSoup(cases_resp.text, 'html.parser')
         # print(cases_soup)
         lis = cases_soup.find(id='photolist').find(id='photolist').find_all('li')
-
+        
         for li in lis:
             try:
                 imageLink = li.find("div", {"class": "photo"}).find('a').find('img')['src']
@@ -109,6 +108,11 @@ def crawl_manager_cases_by_requests(user, url):
                     houseCase.image = imageLink
                     houseCase.case_link = caseLink
                     houseCase.shop_id = shop_id
+                    houseCase.update_date = date.today()
+                    houseCase.save()
+                else:
+                    houseCase = HouseCase.objects.filter(case_link=caseLink, user=user).first()
+                    houseCase.update_date = date.today()
                     houseCase.save()
 
             except Exception as e:
@@ -116,6 +120,8 @@ def crawl_manager_cases_by_requests(user, url):
 
         i = i + 1
 
+    HouseCase.objects.filter(user=user).filter(~Q(update_date=date.today())).delete()
+    
 
 def assign_crawl_manager_tasks():
     users = User.objects.all()
@@ -151,6 +157,12 @@ def crawl_manager_data(user_id):
     user.good_at = lis[1].text.replace('業務特長：','')
 
     user.save()
+
+@shared_task
+def add(x, y):
+    print("x+y=")
+    print(x+y)
+    return x + y
 
 def export_managers_to_csv():
     PWD = os.path.dirname(os.path.realpath(__file__ )) 

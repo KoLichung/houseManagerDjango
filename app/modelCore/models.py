@@ -116,6 +116,7 @@ class HouseCase(models.Model):
     image = models.CharField(max_length=255, default='', blank = True, null=True)
     case_link = models.CharField(max_length=255, default='', blank = True, null=True)
     shop_id = models.CharField(max_length=20, default='', blank = True, null=True)
+    update_date = models.DateField(blank = True, null=True)
 
 class FAQ(models.Model):
     user =  models.ForeignKey(
