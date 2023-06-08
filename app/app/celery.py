@@ -1,7 +1,6 @@
 import os
 from celery import Celery
 from celery.schedules import crontab
-from modelCore.models import User
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'app.settings')
 app = Celery('app')
