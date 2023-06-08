@@ -20,10 +20,8 @@ def setup_periodic_tasks(sender, **kwargs):
 
 @app.task
 def crawl_cases(arg):
-    from seleniumApp.tasks import crawl_manager_cases_by_requests
-    users = User.objects.filter(page_link__contains='www.591.com.tw')
-    for user in users:
-        crawl_manager_cases_by_requests.delay(user,user.page_link)
+    from seleniumApp.tasks import assign_everyday_crawl_cases_task
+    assign_everyday_crawl_cases_task()
 
 @app.task
 def test_add(arg):

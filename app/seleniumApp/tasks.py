@@ -16,6 +16,12 @@ ROOT_DIR = (
 env = environ.Env()
 env.read_env(str(ROOT_DIR.path(".env")))
 
+@shared_task
+def assign_everyday_crawl_cases_task():
+    users = User.objects.filter(page_link__contains='www.591.com.tw')
+    for user in users:
+        crawl_manager_cases_by_requests.delay(user,user.page_link)
+
 def crawl_manager_cases_by_requests(user, url):
     # url = 'https://www.591.com.tw/broker24177-sale'
     sale_url = f'{url}-sale'
@@ -122,7 +128,6 @@ def crawl_manager_cases_by_requests(user, url):
 
     HouseCase.objects.filter(user=user).filter(~Q(update_date=date.today())).delete()
     
-
 def assign_crawl_manager_tasks():
     users = User.objects.all()
     for user in users:
