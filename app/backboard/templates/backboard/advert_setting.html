@@ -22,14 +22,14 @@
                   {% endif %}
               </div>
 
-              <div class="mb-3">
+              {% comment %} <div class="mb-3">
                   <label class="form-label" for="google_id">Google ID</label>
                   {% if user.google_id %}
                     <input class="form-control" id="google_id" name="google_id" type="text" value="{{user.google_id}}"/>
                   {% else %}
                     <input class="form-control" id="google_id" name="google_id" type="text" />
                   {% endif %}
-              </div>
+              </div> {% endcomment %}
 
               <div class="col-12 text-end">
                   <button class="blue-btn" type="submit" name="post" value='save' onclick="location.href='{% url 'advert_setting' %}'">儲存</button>

@@ -189,7 +189,7 @@ def advert_setting(request):
     user = request.user
     if request.method == 'POST':
         user.fb_pixel = request.POST.get('fb_pixel')
-        user.google_id = request.POST.get('google_id')
+        # user.google_id = request.POST.get('google_id')
         user.save()
         return redirect_params('advert_setting',{'user':user})
 
